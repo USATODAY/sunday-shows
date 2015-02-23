@@ -50,3 +50,18 @@
     position: relative;
     margin: 1em auto;
 }
+
+.iapp-transition-out {
+    animation: transition-out;
+    animation-duration: 1000ms;
+    animation-timing-function: ease;
+}
+
+@keyframes transition-out {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(0, 1000px);
+    }
+}

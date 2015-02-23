@@ -48,7 +48,7 @@ define([
       this.shareModel = new ShareModel();
       this.shareView = new ShareView({model: this.shareModel});
       this.menuView = new MenuView({model: new MenuModel()});
-      this.dressCollection = new DressCollection(dataManager.data.dresses); 
+      this.dressCollection = new DressCollection(dataManager.data.items); 
       this.cardsView = new CardsView({collection: this.dressCollection});
       this.endView = new EndView({model: this.shareModel});
       Backbone.history.start();
@@ -71,7 +71,10 @@ define([
     },
 
     onBeginClick: function() {
-      this.$('.iapp-intro-wrap').fadeOut();
+        this.$('.iapp-begin-button').addClass('iapp-transition-out');
+        _.delay(function() {
+            this.$('.iapp-intro-wrap').fadeOut();
+        }, 500)
     }
     
   });

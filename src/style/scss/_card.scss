@@ -179,7 +179,7 @@
 }
 
 .iapp-feedback-button {
-  background: $purple;
+  background: $blue;
   bottom: 0;
   @include BoxShadowHelper(2);
   color: white;
@@ -195,7 +195,7 @@
   transition: all 250ms ease;
   width: 5rem;
   &:hover {
-    background: lighten($purple, 10);
+    background: lighten($blue, 10);
   }
 }
 
@@ -253,7 +253,7 @@
 }
 
 .iapp-card-status-liked {
-  background-color: $purple;
+  background-color: $blue;
 }
 
 .iapp-card-status-disliked {

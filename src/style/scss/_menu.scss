@@ -42,7 +42,7 @@
   }
   .iapp-top-button {
     background: white;
-    color: $purple;
+    color: $blue;
   }
 }
 
@@ -84,7 +84,7 @@
     bottom: 25px;
     border-radius: 50%;
     @include BoxShadowHelper(4);
-    color: $purple; 
+    color: $blue; 
     height: 80px;
     position: absolute;
     right: 50%;
@@ -98,7 +98,7 @@
 }
 
 .iapp-menu-button {
-  background: $purple;
+  background: $blue;
   bottom: 25px;
   border-radius: 50%;
   @include BoxShadowHelper(4);
@@ -116,7 +116,7 @@
 }
 
 .iapp-top-button {
-  background: $purple;
+  background: $blue;
   bottom: 25px;
   border-radius: 50%;
   @include BoxShadowHelper(4);
@@ -240,7 +240,7 @@
 
 .iapp-reset-button {
   
-  background: $purple;
+  background: $blue;
   bottom: 25px;
   border-radius: 50%;
   @include BoxShadowHelper(4);

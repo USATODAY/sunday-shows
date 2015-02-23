@@ -24,19 +24,29 @@ define(
         getData: function() {
             var _this = this;
             jQuery.getJSON(dataURL, function(data) {        
-                _this.data.dresses = data;
+                _this.data.items = data;
                 _this.organizeTags();
                 
                 
 
                 
 
-                _.each(_this.data.dresses, function(dataObj) {
+                _.each(_this.data.items, function(dataObj) {
                     
 
-                    
+                   console.warn('temp dummy data');
 
-                    dataObj.photo_url = _this.base_url + dataObj.photo_filename + '.jpg';
+                   if (dataObj.uid % 2 == 0) {
+                        dataObj.photo_url = _this.base_url + 'bush.jpg';
+                        dataObj.person_name = "Jeb Bush";
+                        dataObj.photo_caption = "Republican candidate";
+                   } else {
+                        dataObj.photo_url = _this.base_url + 'clinton.jpg';
+                        dataObj.person_name = "Hillary Clinton";
+                        dataObj.photo_caption = "Democratic candidate";
+                   }
+
+                    // dataObj.photo_url = _this.base_url + dataObj.photo_filename + '.jpg';
                 });
 
                 
@@ -56,7 +66,7 @@ define(
                     tagPretty: 'disliked'
                 },
             ];
-            _.each(_this.data.dresses, function(dataObj) {
+            _.each(_this.data.items, function(dataObj) {
                     
                 //split tags string into array
                 if (dataObj.tags !== "") {
@@ -94,7 +104,7 @@ define(
             this.data.tags = uniqueTags;
         },
         userName: '',
-        base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/'
+        base_url: 'img/'
     };
 
 
