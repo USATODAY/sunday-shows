@@ -3,8 +3,8 @@
   border-radius: 5px;
   @include BoxShadowHelper(2);
   color: white;
-  float: right;
-  margin-right: -2.5%;
+  float: left;
+  // margin-left: -2.5%;
   padding: 2em;
   position: relative;
   transition: transform 400ms ease;
@@ -12,8 +12,12 @@
   z-index: 200;
 }
 
-.iapp-menu-control-area {
+.iapp-menu-panel.iapp-sticky {
+    position: fixed;
+    top: 0;
+}
 
+.iapp-menu-control-area {
   bottom: 0;
   height: 80px;
   position: fixed;
@@ -29,7 +33,7 @@
 
 .iapp-menu-hide {
   .iapp-menu-panel {
-    transform: translate(120%, 0);
+    transform: translate(-120%, 0);
   }
   .iapp-menu-button {
     transform: translate(50%, 0);
@@ -72,10 +76,10 @@
 }
 
 .iapp-menu-header {
-  font-family: "Futura Today Light", Arial, sans-serif;
+  font-family: "Futura Today DemiBold", Arial, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
 }
 
@@ -157,7 +161,8 @@
 }
 
 .iapp-menu-scoreboard-likes, .iapp-menu-scoreboard-dislikes {
-  height: 100%;
+  display: none;
+    height: 100%;
   width: 12em;
   @media (max-width: 600px) {
     width: 11em;
