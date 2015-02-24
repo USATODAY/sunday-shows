@@ -23,6 +23,7 @@ define([
                 'click .iapp-reset-button': 'onResetClick'
             },
             initialize: function() {
+                
                 this.listenTo(this.model, 'change:isMenuOpen', this.updateState);
                 this.listenTo(this.model, 'change:numdislikes', this.onDislikeChange);
                 this.listenTo(this.model, 'change:numlikes', this.onLikeChange);
@@ -33,6 +34,11 @@ define([
                 this.updateState();
                 this.$el.html(this.template(this.model.toJSON()));
                 this.addSubViews();
+                console.log(this.model.get('mobileThreshold'));
+                if (window.innerWidth >= this.model.get('mobileThreshold')){
+                    this.model.set({'isMenuOpen': true});
+                }
+                this._defaultPanelOffset = this.$('.iapp-menu-panel').offset().top;
                 return this;
             },
             addSubViews: function() {
@@ -71,9 +77,26 @@ define([
                } else {
                     this.$el.removeClass('iapp-menu-scrolled');
                }
+               if(this.checkIsAtTop()) {
+                    this.$('.iapp-menu-panel').addClass('iapp-sticky');
+               } else {
+                    this.$('.iapp-menu-panel').removeClass('iapp-sticky');
+               }
             }, 500),
             onTopClick: function() {
                 $('body,html').animate({scrollTop: 0}, 500);
+            },
+
+            checkIsAtTop: function() {
+                var $panel = this.$('.iapp-menu-panel');
+                var $window = $(window);
+                var $cardWrap = $('.iapp-card-wrap');
+                console.log(this._defaultPanelOffset);
+                if (this._defaultPanelOffset <= $window.scrollTop()) {
+                    return true;
+                } else {
+                    return false;
+                }
             },
 
             checkIsVisible: function() {

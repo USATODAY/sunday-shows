@@ -15,7 +15,6 @@ define(
         },
 
         initialize: function() {
-            
             this.on('change', this.onChange);
             this.listenTo(Backbone, 'window:resize', this.onResize);
             this.listenTo(Backbone, 'liked:update', this.onLikeUpdate);

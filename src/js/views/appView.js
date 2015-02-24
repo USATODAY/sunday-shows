@@ -1,3 +1,5 @@
+//Master AppView module. All other views are children of this view
+
 define([
   'jquery',
   'imagesloaded',

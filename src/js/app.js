@@ -13,31 +13,37 @@ define([
 
 
   return {
+
+    //define entry point init function
     init: function() {
-      require( [ 'jquery-bridget/jquery.bridget' ],
-        function() {
-          // make Isotope a jQuery plugin
-          $.bridget( 'isotope', Isotope );
+
+        //require jquery-bridget for puluginizing Isotope
+        require( [ 'jquery-bridget/jquery.bridget' ],
+            function() {
+            // make Isotope a jQuery plugin
+            $.bridget( 'isotope', Isotope );
+
+            // add class for mobile or tabled
+            if (config.isTablet || config.isMobile) {
+                $('.iapp-page-wrap').addClass('iapp-touch-device');
+            }
+            
+            //turn resize and scroll into Backbone events
+            $(window).on('resize', function(e) {
+                Backbone.trigger('window:resize');
+            });
+
+            $(window).on('scroll', function() {
+                Backbone.trigger('window:scroll');
+            });
 
 
-          if (config.isTablet || config.isMobile) {
-            $('.iapp-page-wrap').addClass('iapp-touch-device');
-          }
-
-          $(window).on('resize', function(e) {
-            Backbone.trigger('window:resize');
-          });
-
-          $(window).on('scroll', function() {
-            Backbone.trigger('window:scroll');
-          });
-
-
-          //Make data request
+            //Make data request
           
-          dataManager.getData();
+            dataManager.getData();
 
-          appview = new appView();
+            //Create app view
+            appview = new appView();
           
         }
       );   
