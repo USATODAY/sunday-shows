@@ -22,5 +22,12 @@ and install Bower with
 Once those dependencies are set up, from this repository run `npm install`, then run `grunt`
 
 
+##Data tools
+
+This project's data tools assume that you have a Python virtual envirement set up, with USA TODAY's Google credentials stored as $GOOGLE_USER and $GOOGLE_PASS environment variables.
+
+To work with this project's data tools, first install dependencies with `pip install -r requirements.txt`
+
+Once your environment is set up, and dependencies are installed, run `fab updater` to download updated data, run it through the conversion script and upload it to the server.
+
 ###Live version:
-http://www.gannett-cdn.com/experiments/usatoday/2015/02/sunday-shows/
