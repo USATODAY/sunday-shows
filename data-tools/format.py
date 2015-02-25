@@ -1,9 +1,15 @@
 import xlrd
 import json
 
+
+# create appearance entry function
 def create_appearance_dict(appearance):
-    date_tuple = xlrd.xldate_as_tuple(appearance["DATE"], wb.datemode)
-    print date_tuple[0]
+    try:    
+        date_tuple = xlrd.xldate_as_tuple(appearance["DATE"], wb.datemode)
+        date_string = "%s/%s/%s" % (str(date_tuple[1]), str(date_tuple[2]), str(date_tuple[0]))
+    except:
+        print "invalid date in entry %s" % (appearance["Guest"])
+        date_string = ""
     new_appearance_dict = {
         "date": appearance["DATE"]
     }
@@ -23,11 +29,10 @@ def create_appearance_dict(appearance):
         new_appearance_dict["network"] = "Univision"
     
     return new_appearance_dict
+
+
 # Open the workbook
 wb = xlrd.open_workbook('src/data.xlsx')
-
-# Print the sheet names
-print wb.datemode
 
 # Get the first sheet either by index or by name
 sh = wb.sheet_by_index(0)
