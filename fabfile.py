@@ -1,5 +1,6 @@
 from data_tools.updatedata import get_data
 from data_tools.formatdata import format_data
+from data_tools.slack_tools import slack_notify
 from fabric.operations import local as run
 import os
 
@@ -14,3 +15,4 @@ def updater(target="dev"):
     run("csvjson %s > %s" % (input_csv, output_json))
     print("Formatting data...")
     format_data()
+    slack_notify("Talk show data updated successfully", "@mitchthorson")
