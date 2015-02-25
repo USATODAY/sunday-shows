@@ -93,6 +93,6 @@ class GoogleDoc(object):
             if r.status_code != 200:
                 raise KeyError("Error! Your Google Doc does not exist.")
 
-            with open('src/%s.%s' % (self.file_name, self.file_format), 'wb') as writefile:
+            with open('%s/src/%s.%s' % (os.path.dirname(__file__), self.file_name, self.file_format), 'wb') as writefile:
                 writefile.write(r.content)
 
