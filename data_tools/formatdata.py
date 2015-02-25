@@ -1,21 +1,37 @@
 import xlrd
 import json
 import os
+import datetime
 
 source_file = os.path.join(os.path.dirname(__file__), 'src/data.json')
 output_file = os.path.join(os.path.dirname(__file__), 'output/data.json') 
 
+
+def check_last_week(appearance):
+    date = appearance["DATE"]
+    if date == "":
+        return False
+    date_array = date.split("/")
+    appearance_date_obj = datetime.datetime(int(date_array[2]), int(date_array[0]), int(date_array[1]))
+    current_date = datetime.datetime.today()
+    last_sunday_date = datetime.datetime(current_date.year, current_date.month, current_date.day - (current_date.weekday() + 1))
+    if appearance_date_obj.year == last_sunday_date.year and appearance_date_obj.month == last_sunday_date.month and appearance_date_obj.day == last_sunday_date.day:
+        return True
+    else:
+        return False
+
 # create appearance entry function
 def create_appearance_dict(appearance):
-    try:    
-        date_tuple = xlrd.xldate_as_tuple(appearance["DATE"], wb.datemode)
-        date_string = "%s/%s/%s" % (str(date_tuple[1]), str(date_tuple[2]), str(date_tuple[0]))
-    except:
-        # print "invalid date in entry %s" % (appearance["Guest"])
-        date_string = ""
     new_appearance_dict = {
         "date": appearance["DATE"]
     }
+
+    is_last_week = check_last_week(appearance)
+
+    if is_last_week == True:
+        new_appearance_dict['last_week'] = True
+    else:
+        new_appearance_dict['last_week'] = False
 
     # check for which network the appearance was on
     if appearance["Fox"].lower() == "x":
@@ -90,6 +106,7 @@ def format_data():
                 "race": appearance["Race"],
                 "gender": appearance["Gender"],
                 "description": appearance["Description"],
+                "last_week": False
             }
             # check for boolean values on appearance
             if appearance["House"].lower() == "x":
@@ -117,6 +134,8 @@ def format_data():
             new_person_dict["appearances"] = []
 
             new_appearance_dict = create_appearance_dict(appearance)
+            if new_appearance_dict["last_week"] == True:
+                new_person_dict["last_week"] = True
 
             new_person_dict["appearances"].append(new_appearance_dict)
 
