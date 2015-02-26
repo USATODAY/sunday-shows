@@ -6,7 +6,7 @@ var home = osenv.home();
 module.exports = function(grunt) {
 
     try {
-        var secrets = JSON.parse(fs.readFileSync(home + '/.secrets/secrets.json', 'utf8'));
+        var secrets = grunt.file.readJSON(home + '/.secrets/secrets.json');
     }
     catch(e) {
         var secrets = {host: '', akamai_1: ''};
