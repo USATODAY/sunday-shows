@@ -14,17 +14,26 @@ return __p
 
 this["templates"]["card-back.html"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape;
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '\n      <div class="card card-detail">\n      <div class="iapp-card-status iapp-card-status-liked"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" alt="" class="iapp-card-status-icon"></div>\n        <div class="iapp-card-status iapp-card-status-disliked"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" alt="" class="iapp-card-status-icon"></div>\n      \n        <div class="iapp-detail-image-wrap">\n            <img src="' +
+__p += '\n      <div class="card card-detail">\n      \n        <div class="iapp-detail-image-wrap">\n            <img src="' +
 ((__t = (photo_url)) == null ? '' : __t) +
 '" alt="' +
-((__t = (person_name)) == null ? '' : __t) +
-'" class="iapp-detail-image">\n            <div class="iapp-feedback-buttons">\n                <h4 class="iapp-like-button iapp-feedback-button"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" class="iapp-feedback-icon" alt="Like"></h4>\n                <h4 class="iapp-dislike-button iapp-feedback-button"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" class="iapp-feedback-icon" alt="Dislike"></h4>     \n            </div>\n        </div>\n      \n        <div class="close-card"></div>\n      \n      \n      \n        <div class="iapp-detail-info">\n            <h2 class="card-back-header">' +
-((__t = ( person_name )) == null ? '' : __t) +
+((__t = (guest)) == null ? '' : __t) +
+'" class="iapp-detail-image">\n        </div>\n      \n        <div class="close-card"></div>\n      \n      \n      \n        <div class="iapp-detail-info">\n            <h2 class="card-back-header">' +
+((__t = ( guest )) == null ? '' : __t) +
 ' </h2>\n            <p class="iapp-summary">' +
-((__t = ( photo_caption )) == null ? '' : __t) +
-'</p>\n            <p class="iapp-card-back-photo-credit">' +
+((__t = (description)) == null ? '' : __t) +
+'</p>\n            ';
+ _.each(appearances, function(appearance) { ;
+__p += '\n                <div class="iapp-card-back-detail-appearance">\n                    <span class="iapp-card-back-detail-appearance-date">' +
+((__t = (appearance.date)) == null ? '' : __t) +
+'</span><span class="iapp-card-back-detail-appearance-network">' +
+((__t = (appearance.network)) == null ? '' : __t) +
+'</span>\n                </div>\n            \n            ';
+});
+__p += '\n            <p class="iapp-card-back-photo-credit">' +
 ((__t = (photo_credit)) == null ? '' : __t) +
 '</p>\n        </div>\n      \n      \n      </div>\n      \n        <div class="iapp-detail-bg"></div> \n\n';
 
@@ -39,11 +48,11 @@ with (obj) {
 __p += '<div class="iapp-card-front-image-wrap">\n    <img class="cover-img" src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/load.png" data-src=\'' +
 ((__t = (photo_url)) == null ? '' : __t) +
 '\'alt="' +
-((__t = ( person_name)) == null ? '' : __t) +
-'">\n    <div class="iapp-feedback-buttons">\n        <h4 class="iapp-like-button iapp-feedback-button"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" class="iapp-feedback-icon" alt="Like"></h4>\n        <h4 class="iapp-dislike-button iapp-feedback-button"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" class="iapp-feedback-icon" alt="Dislike"></h4>     \n    </div>\n</div>\n<div class="iapp-card-status iapp-card-status-liked"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" alt="" class="iapp-card-status-icon"></div>\n<div class="iapp-card-status iapp-card-status-disliked"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" alt="" class="iapp-card-status-icon"></div>\n<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
-((__t = ( person_name)) == null ? '' : __t) +
+((__t = (guest)) == null ? '' : __t) +
+'">\n</div>\n<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
+((__t = ( guest)) == null ? '' : __t) +
 '</h2>\n    <p class="iapp-card-info-text">' +
-((__t = ( photo_caption)) == null ? '' : __t) +
+((__t = (description)) == null ? '' : __t) +
 '</p>\n    <p class="iapp-card-info-photo-credit">' +
 ((__t = ( photo_credit)) == null ? '' : __t) +
 '</p>\n    \n</div>\n';

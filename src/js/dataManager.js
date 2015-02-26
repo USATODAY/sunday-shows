@@ -30,22 +30,15 @@ define(
                 
 
                 
-
+                var temp_i = 0;
                 _.each(_this.data.items, function(dataObj) {
                     
 
                    console.warn('temp dummy data');
 
-                   if (dataObj.uid % 2 == 0) {
-                        dataObj.photo_url = _this.base_url + 'bush.jpg';
-                        dataObj.person_name = "Jeb Bush";
-                        dataObj.photo_caption = "Republican candidate";
-                   } else {
-                        dataObj.photo_url = _this.base_url + 'clinton.jpg';
-                        dataObj.person_name = "Hillary Clinton";
-                        dataObj.photo_caption = "Democratic candidate";
-                   }
-
+                   dataObj.photo_url = _this.base_url + dataObj.guest.split(" ").join("") + '.jpg';
+                   dataObj.photo_credit = '';
+                    temp_i ++;
                     // dataObj.photo_url = _this.base_url + dataObj.photo_filename + '.jpg';
                 });
 
@@ -56,16 +49,9 @@ define(
         },
         organizeTags: function() {
             var _this = this;
-            var tags = [
-                {
-                    tagName: 'iapp-liked',
-                    tagPretty: 'liked'
-                },
-                {
-                    tagName: 'iapp-disliked',
-                    tagPretty: 'disliked'
-                },
-            ];
+            var tags = [];
+
+            /**
             _.each(_this.data.items, function(dataObj) {
                     
                 //split tags string into array
@@ -102,9 +88,12 @@ define(
             });
             
             this.data.tags = uniqueTags;
+
+            ***/
+           this.data.tags = tags;
         },
         userName: '',
-        base_url: 'img/'
+        base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/02/sunday-shows/img/'
     };
 
 
