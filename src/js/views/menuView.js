@@ -34,7 +34,6 @@ define([
                 this.updateState();
                 this.$el.html(this.template(this.model.toJSON()));
                 this.addSubViews();
-                console.log(this.model.get('mobileThreshold'));
                 if (window.innerWidth >= this.model.get('mobileThreshold')){
                     this.model.set({'isMenuOpen': true});
                 }
@@ -42,7 +41,7 @@ define([
                 return this;
             },
             addSubViews: function() {
-                this.tagsCollection = new TagCollection(dataManager.data.tags);
+                this.tagsCollection = new TagCollection(dataManager.data.filters);
                 this.tagsView = new TagsView({collection: this.tagsCollection});
                 
             },

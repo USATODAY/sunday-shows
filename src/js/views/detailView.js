@@ -14,10 +14,10 @@ define([
         template: templates["card-back.html"],
 
         events: {
-          "click .close-card": "removeCard",
+          "click .close-card": "removeHighlight",
           "click .facebook-share": "facebookShare",
           "click .twitter-share": "twitterShare",
-          "click .iapp-detail-bg": "removeCard",
+          "click .iapp-detail-bg": "removeHighlight",
           'click .iapp-like-button': 'onLikeClick',
           'click .iapp-dislike-button': 'onDislikeClick' 
         },
@@ -25,10 +25,10 @@ define([
         initialize: function() {
 
           // router.navigate("movie/" + this.model.get("rowNumber"));
-          this.listenTo(Backbone, "highlight:remove", this.removeCard);
+          this.listenTo(Backbone, "highlight:remove", this.removeHighlight);
           this.listenTo(this.model, 'change:isLiked', this.onLikeChange);
           this.listenTo(this.model, 'change:isDisliked', this.onDislikeChange);
-          // this.listenTo(this.model, 'change:highlight', this.removeCard);
+          this.listenTo(this.model, 'change:highlight', this.removeCard);
         },
         render: function() {
           this.$el.empty();
@@ -55,17 +55,23 @@ define([
             
         },
 
-        removeCard: function() {
-            this.model.set({highlight: false}); 
-            $('body').removeClass('iapp-no-scroll');
-          
+        removeCard: function(model) {
+            console.log(model);
+
+            if(!model.get('highlight')) {
             
-            this.$el.removeClass("modal-show");
-            var _this = this;
+                $('body').removeClass('iapp-no-scroll');
+              
+                
+                this.$el.removeClass("modal-show");
+                var _this = this;
+                
+                _.delay(function() {
+                  _this.remove();
+                }, 500);
             
-            _.delay(function() {
-              _this.remove();
-            }, 500);
+            }
+           
         
           
         },

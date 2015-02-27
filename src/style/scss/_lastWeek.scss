@@ -1,0 +1,29 @@
+.iapp-last-week-wrap {
+    display: none;
+    width: 100%;
+    @extend .group;
+}
+
+.iapp-last-week-entry {
+    width: 100%;
+    @extend .group;
+}
+.iapp-last-week-route {
+  .iapp-card-wrap {
+    display: none;
+  }
+  .iapp-last-week-wrap {
+    display: block;
+  }
+  .iapp-filters-wrap, .iapp-menu-header-filters {
+    display: none;
+  }
+
+  .iapp-reset-button {
+    display: block;
+  }
+
+  .iapp-menu-close, .iapp-top-button {
+    display: none;
+  }
+}
