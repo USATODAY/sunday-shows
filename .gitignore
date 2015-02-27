@@ -1,7 +1,10 @@
 # Project specific things
 
-data_tools/src/
-data_tools/output/
+data_tools/src/*.json
+data_tools/src/*.csv
+data_tools/src/*.xlsx
+data_tools/output/*.csv
+data_tools/output/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
