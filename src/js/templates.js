@@ -61,6 +61,35 @@ __p += '<div class="iapp-card-front-image-wrap">\n    <img class="cover-img" src
 return __p
 };
 
+this["templates"]["lastWeekView.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class=\'iapp-last-week-entry\'>\n    ';
+ console.log(this); ;
+__p += '\n    <h2 class=\'iapp-last-week-header\'>' +
+((__t = (networkGuests[0].last_week_network)) == null ? '' : __t) +
+'</h2>\n    ';
+ _.each(networkGuests, function(guestObj) { ;
+__p += '\n        <div class="card small-card">\n            \n            <div class="iapp-card-front-image-wrap">\n                <img class="cover-img" src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/load.png" data-src=\'' +
+((__t = (guestObj.photo_url)) == null ? '' : __t) +
+'\'alt="' +
+((__t = (guestObj.guest)) == null ? '' : __t) +
+'">\n            </div>\n            <div class="iapp-card-info">\n                <h2 class="iapp-card-info-header">' +
+((__t = ( guestObj.guest)) == null ? '' : __t) +
+'</h2>\n                <p class="iapp-card-info-text">' +
+((__t = (guestObj.description)) == null ? '' : __t) +
+'</p>\n                <p class="iapp-card-info-photo-credit">' +
+((__t = ( guestObj.photo_credit)) == null ? '' : __t) +
+'</p>\n                \n            </div>\n        </div>\n    ';
+ });
+__p += '\n</div>\n';
+
+}
+return __p
+};
+
 this["templates"]["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;

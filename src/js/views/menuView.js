@@ -34,7 +34,6 @@ define([
                 this.updateState();
                 this.$el.html(this.template(this.model.toJSON()));
                 this.addSubViews();
-                console.log(this.model.get('mobileThreshold'));
                 if (window.innerWidth >= this.model.get('mobileThreshold')){
                     this.model.set({'isMenuOpen': true});
                 }

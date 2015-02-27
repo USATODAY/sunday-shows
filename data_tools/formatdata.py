@@ -148,7 +148,8 @@ def format_data():
                 "race": appearance["Race"],
                 "gender": appearance["Gender"],
                 "description": appearance["Description"],
-                "last_week": False
+                "last_week": False,
+                "last_week_appearances": []
             }
 
             # fix gender to full words
@@ -188,6 +189,7 @@ def format_data():
             new_appearance_dict = create_appearance_dict(appearance)
             if new_appearance_dict["last_week"] == True:
                 new_person_dict["last_week"] = True
+                new_person_dict["last_week_appearances"].append(new_appearance_dict["network"])
 
             new_person_dict["appearances"].append(new_appearance_dict)
 
@@ -201,6 +203,8 @@ def format_data():
 
             if new_appearance_dict["last_week"] == True:
                 people_dict[guest_name]["last_week"] = True
+                people_dict[guest_name]["last_week_appearances"].append(new_appearance_dict["network"])
+
             #append it to the existing person appearance list
             people_dict[guest_name]["appearances"].append(new_appearance_dict)
         

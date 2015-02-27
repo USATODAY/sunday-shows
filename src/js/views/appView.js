@@ -16,12 +16,13 @@ define([
   'views/menuView',
   'views/shareView',
   'views/endView',
+  'views/LastWeekView',
   'collections/DressCollection',
   'router',
   'dataManager',
   'jquery_ui_touch_punch'
   ], 
-  function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, MenuModel, ShareModel, detailView, CardsView, MenuView, ShareView, EndView, DressCollection, router, dataManager) {
+  function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, MenuModel, ShareModel, detailView, CardsView, MenuView, ShareView, EndView, LastWeekView, DressCollection, router, dataManager) {
 
   return Backbone.View.extend({
     el: ".iapp-page-wrap",
@@ -82,6 +83,10 @@ define([
 
     onRouteLastWeek: function() {
         console.log(this.lastWeekCollection);
+        this.lastWeekView = new LastWeekView({collection: this.lastWeekCollection});
+        this.$el.append(this.lastWeekView.el);
+        this.cardsView.$el.hide();
+        this.menuView.model.set({'isMenuOpen': false});
     }
     
   });
