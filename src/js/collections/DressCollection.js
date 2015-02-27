@@ -30,6 +30,7 @@ define([
       onFilterUpdate: function(filterArray) {
            this.filterByTagArray(filterArray);
            var availableTags = this.getAvailableTags();
+           console.log(availableTags);
            Backbone.trigger("items:filtered", availableTags);
       },
 

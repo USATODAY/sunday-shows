@@ -54,11 +54,11 @@ def create_appearance_dict(appearance):
 def create_tag_list(person_dict):
     new_tag_list = []
     if person_dict["party"] is not "":
-        new_tag_list.append(person_dict["party"])
+        new_tag_list.append(person_dict["party"].lower())
     if person_dict["gender"] is not "":
-        new_tag_list.append(person_dict["gender"])
+        new_tag_list.append(person_dict["gender"].lower())
     if person_dict["race"] is not "":
-        new_tag_list.append(person_dict["race"])
+        new_tag_list.append(person_dict["race"].lower())
     if person_dict["house"] == True:
         new_tag_list.append("house")
     elif person_dict["senate"] == True:
@@ -73,7 +73,7 @@ def create_tag_list(person_dict):
         new_tag_list.append("other")
     for appearance in person_dict["appearances"]:
         if "network" in appearance.keys():
-            new_tag_list.append(appearance["network"])
+            new_tag_list.append(appearance["network"].lower())
 
     return new_tag_list
 
@@ -150,6 +150,12 @@ def format_data():
                 "description": appearance["Description"],
                 "last_week": False
             }
+
+            # fix gender to full words
+            if new_person_dict["gender"].lower().strip() == "f":
+                new_person_dict["gender"] = "female"
+            elif new_person_dict["gender"].lower().strip() == "m":
+                new_person_dict["gender"] = "male"
             # check for boolean values on appearance
             if appearance["House"].lower() == "x":
                 new_person_dict["house"] = True
