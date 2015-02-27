@@ -54,7 +54,8 @@ define([
       this.dressCollection = new DressCollection(dataManager.data.people); 
       this.cardsView = new CardsView({collection: this.dressCollection});
       this.lastWeekCollection = new DressCollection(this.dressCollection.where({'last_week': true}));
-      this.endView = new EndView({model: this.shareModel});
+      this.lastWeekView = new LastWeekView({collection: this.lastWeekCollection});
+      this.$el.append(this.lastWeekView.el);
       Backbone.history.start();
     },
 
@@ -71,7 +72,7 @@ define([
     },
 
     onAppReset: function() {
-      this.$el.removeClass('iapp-share-route');
+      this.$el.removeClass('iapp-last-week-route');
     },
 
     onBeginClick: function() {
@@ -82,10 +83,7 @@ define([
     },
 
     onRouteLastWeek: function() {
-        console.log(this.lastWeekCollection);
-        this.lastWeekView = new LastWeekView({collection: this.lastWeekCollection});
-        this.$el.append(this.lastWeekView.el);
-        this.cardsView.$el.hide();
+        this.$el.addClass('iapp-last-week-route');
         this.menuView.model.set({'isMenuOpen': false});
     }
     

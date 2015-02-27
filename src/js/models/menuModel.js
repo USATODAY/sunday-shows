@@ -24,6 +24,7 @@ define(
             this.listenTo(Backbone, 'window:resize', this.onResize);
             this.listenTo(Backbone, 'liked:update', this.onLikeUpdate);
             this.listenTo(Backbone, 'disliked:update', this.onDislikeUpdate);
+            this.listenTo(Backbone, 'app:reset', this.onAppReset);
         },
         onChange: function() {
             if (this.get('isMenuOpen')) {
@@ -46,6 +47,11 @@ define(
         onLikeUpdate: function(likeArray) {
             var numLikes = likeArray.length;
             this.set({'numlikes': numLikes});
+        },
+        onAppReset: function() {
+            if (!config.isMobile && window.innerWidth >= this.mobileThreshhold) {
+                this.set({'isMenuOpen': true});
+            }
         },
         
 
