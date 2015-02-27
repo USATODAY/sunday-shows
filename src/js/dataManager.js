@@ -49,13 +49,13 @@ define(
         },
         organizeTags: function() {
             var _this = this;
-            var tags = []
+            var tags = [];
             _this.data.filters = _.map(_this.data.filters, function(filter){
                 return {
                     tagName: filter,
                     tagPretty: filter
-                }
-            })
+                };
+            });
         },
         userName: '',
         base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/02/sunday-shows/img/'

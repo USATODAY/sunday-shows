@@ -30,7 +30,7 @@ define([
     },
 
     initialize: function() {
-
+      this.listenTo(Backbone, 'route:last-week', this.onRouteLastWeek);
       this.listenTo(Backbone, 'route:share', this.onRouteShare);
       this.listenTo(Backbone, 'data:ready', this.onDataReady);
       this.listenTo(Backbone, 'app:reset', this.onAppReset);
@@ -52,6 +52,7 @@ define([
       this.menuView = new MenuView({model: new MenuModel()});
       this.dressCollection = new DressCollection(dataManager.data.people); 
       this.cardsView = new CardsView({collection: this.dressCollection});
+      this.lastWeekCollection = new DressCollection(this.dressCollection.where({'last_week': true}));
       this.endView = new EndView({model: this.shareModel});
       Backbone.history.start();
     },
@@ -76,7 +77,11 @@ define([
         this.$('.iapp-begin-button').addClass('iapp-transition-out');
         _.delay(function() {
             this.$('.iapp-intro-wrap').fadeOut();
-        }, 500)
+        }, 500);
+    },
+
+    onRouteLastWeek: function() {
+        console.log(this.lastWeekCollection);
     }
     
   });
