@@ -90,7 +90,6 @@ define([
                 var $panel = this.$('.iapp-menu-panel');
                 var $window = $(window);
                 var $cardWrap = $('.iapp-card-wrap');
-                console.log(this._defaultPanelOffset);
                 if (this._defaultPanelOffset <= $window.scrollTop()) {
                     return true;
                 } else {

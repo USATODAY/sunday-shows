@@ -53,7 +53,6 @@ define([
             this._availableItems = this.where({'isAvailable': true});
 
         },
-
         getAvailableTags: function() {
             availableTags = [];
 
@@ -62,96 +61,8 @@ define([
             });
             return availableTags;
         },
-
-        onLikedChange: function() {
-          
-          var liked = this.filter(function(model) {
-            return model.get('isLiked');
-          });
-          
-          this.numLiked = liked.length;
-
-          if (this.numLiked == 10 && this.numDisliked == 10) {
-            Backbone.trigger('end:show', 'both');
-          } else if (this.numLiked == 10) {
-            Backbone.trigger('end:show', 'like');
-          }
-
-          Backbone.trigger('liked:update', liked);
-        },
-
-        onDislikedChange: function() {
-          var disliked = this.filter(function(model) {
-            return model.get('isDisliked');
-          });
-          
-          this.numDisliked = disliked.length;
-
-          if (this.numLiked == 10 && this.numDisliked == 10) {
-            Backbone.trigger('end:show', 'both');
-          } else if (this.numDisliked == 10) {
-            Backbone.trigger('end:show', 'dislike');
-          }
-
-          Backbone.trigger('disliked:update', disliked);
-        },
-
-        numLiked: 0,
-
-        numDisliked: 0,
-
-        onRouteLike: function(likestring) {
-          
-          
-          var uidArray = likestring.split('-');
-          var filteredModels = this.filter(function(model) {
-            return _.contains(uidArray, model.get('uid'));
-          });
-
-          _.each(filteredModels, function(model) {
-            model.like();
-          });
-        },
-
-        onRouteDislike: function(dislikestring) {
-          
-          
-          var uidArray = dislikestring.split('-');
-          var filteredModels = this.filter(function(model) {
-            return _.contains(uidArray, model.get('uid'));
-          });
-
-          _.each(filteredModels, function(model) {
-            model.dislike();
-          });
-        },
-
-        onRouteBoth: function(likestring, dislikestring) {
-         
-          
-          var likeuidArray = likestring.split('-');
-          var likefilteredModels = this.filter(function(model) {
-            return _.contains(likeuidArray, model.get('uid'));
-          });
-
-          _.each(likefilteredModels, function(model) {
-            model.like();
-          });
-
-           var dislikeuidArray = dislikestring.split('-');
-          var dislikefilteredModels = this.filter(function(model) {
-            return _.contains(dislikeuidArray, model.get('uid'));
-          });
-
-          _.each(dislikefilteredModels, function(model) {
-            model.dislike();
-          });
-        },
-
         onResetApp: function() {
-            console.log('reset');
           this.each(function(model) {
-              console.log('set highlight to false');
             model.set({'highlight': false});
           });
         }

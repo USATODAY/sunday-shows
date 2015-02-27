@@ -66,9 +66,7 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class=\'iapp-last-week-entry\'>\n    ';
- console.log(this); ;
-__p += '\n    <h2 class=\'iapp-last-week-header\'>' +
+__p += '<div class=\'iapp-last-week-entry\'>\n    <h2 class=\'iapp-last-week-header\'>' +
 ((__t = (networkGuests[0].last_week_network)) == null ? '' : __t) +
 '</h2>\n    ';
  _.each(networkGuests, function(guestObj) { ;
