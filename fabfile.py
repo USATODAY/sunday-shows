@@ -4,15 +4,56 @@ from data_tools.slack_tools import slack_notify
 from fabric.operations import local as run
 import os
 
-input_csv = os.path.join(os.path.dirname(__file__), 'data_tools/src/data.csv') 
-output_json = os.path.join(os.path.dirname(__file__), 'data_tools/src/data.json') 
 
+def create_absolute_path(relative_path):
+    return os.path.join(os.path.dirname(__file__), relative_path)
+
+master_spreadsheet = create_absolute_path('data_tools/src/data.xlsx')
+data_csv = create_absolute_path('data_tools/src/data.csv') 
+data_json = create_absolute_path('data_tools/src/data.json') 
+
+filter_csv = create_absolute_path('data_tools/src/filters.csv') 
+filter_json = create_absolute_path('data_tools/src/filters.json') 
+
+copy_csv = create_absolute_path('data_tools/src/copy.csv') 
+copy_json = create_absolute_path('data_tools/src/copy.json') 
 
 def updater(target="dev"):
     print ("Downloading new data file from Google...")
     get_data()
     print ("Converting to JSON...")
-    run("csvjson %s > %s" % (input_csv, output_json))
+    # remove files if they already exist
+    try:
+        run("rm %s" % (data_json))
+    except:
+        pass
+    try:
+        run("rm %s" % (data_csv))
+    except:
+        pass
+    try:
+        run("rm %s" % (filter_json))
+    except:
+        pass
+    try:
+        run("rm %s" % (filter_csv))
+    except:
+        pass
+    try:
+        run("rm %s" % (copy_csv))
+    except:
+        pass
+    try:
+        run("rm %s" % (copy_json))
+    except:
+        pass
+    # convert excel sheet into 3 CSVs
+    run ("in2csv %s --sheet Sheet1 > %s" % (master_spreadsheet, data_csv))
+    run ("in2csv %s --sheet filters > %s" % (master_spreadsheet, filter_csv))
+    run ("in2csv %s --sheet copy > %s" % (master_spreadsheet, copy_csv))
+    run("csvjson %s > %s" % (data_csv, data_json))
+    run("csvjson %s > %s" % (filter_csv, filter_json))
+    run("csvjson %s > %s" % (copy_csv, copy_json))
     print("Formatting data...")
     format_data()
     slack_notify("Talk show data updated successfully", "@mitchthorson")

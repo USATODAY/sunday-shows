@@ -9,12 +9,17 @@ define(
 
     return Backbone.Model.extend( {
         defaults: {
-            isMenuOpen: false,
+            isMenuOpen: true,
             numlikes: 0,
             numdislikes: 0
         },
 
         initialize: function() {
+            if (config.isMobile || window.innerWidth < this.mobileThreshhold) {
+                this.set({
+                    'isMenuOpen': false
+                });
+            }
             this.on('change', this.onChange);
             this.listenTo(Backbone, 'window:resize', this.onResize);
             this.listenTo(Backbone, 'liked:update', this.onLikeUpdate);

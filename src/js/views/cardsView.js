@@ -51,7 +51,7 @@ define([
     render: function() {
       this.$el.empty();
       this.collection.each(this.addOne, this);
-      this.$el.addClass('iapp-card-wrap-full-width');
+      // this.$el.addClass('iapp-card-wrap-full-width');
       
       var $el = this.$el;
       var _this = this;

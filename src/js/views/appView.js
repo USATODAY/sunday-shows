@@ -50,7 +50,7 @@ define([
       this.shareModel = new ShareModel();
       this.shareView = new ShareView({model: this.shareModel});
       this.menuView = new MenuView({model: new MenuModel()});
-      this.dressCollection = new DressCollection(dataManager.data.items); 
+      this.dressCollection = new DressCollection(dataManager.data.people); 
       this.cardsView = new CardsView({collection: this.dressCollection});
       this.endView = new EndView({model: this.shareModel});
       Backbone.history.start();

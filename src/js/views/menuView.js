@@ -42,7 +42,7 @@ define([
                 return this;
             },
             addSubViews: function() {
-                this.tagsCollection = new TagCollection(dataManager.data.tags);
+                this.tagsCollection = new TagCollection(dataManager.data.filters);
                 this.tagsView = new TagsView({collection: this.tagsCollection});
                 
             },

@@ -30,8 +30,8 @@ class GoogleDoc(object):
     gid = '0'
 
     # You can change these with kwargs but it's not recommended.
-    spreadsheet_url = 'https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=%(key)s&exportFormat=%(format)s&gid=%(gid)s'
-    new_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/%(key)s/export?format=%(format)s&id=%(key)s&gid=%(gid)s'
+    spreadsheet_url = 'https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=%(key)s&exportFormat=%(format)s'
+    new_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/%(key)s/export?format=%(format)s&id=%(key)s'
     auth = None
     email = os.environ.get('GOOGLE_USER', None)
     password = os.environ.get('GOOGLE_PASS', None)
@@ -81,7 +81,7 @@ class GoogleDoc(object):
             headers = {}
             headers['Authorization'] = "GoogleLogin auth=%s" % self.auth
 
-            url_params = { 'key': self.key, 'format': self.file_format, 'gid': self.gid }
+            url_params = { 'key': self.key, 'format': self.file_format}
             url = self.new_spreadsheet_url % url_params
 
             r = requests.get(url, headers=headers)
