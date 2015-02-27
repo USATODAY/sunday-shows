@@ -18,11 +18,12 @@ define([
   'views/endView',
   'views/LastWeekView',
   'collections/DressCollection',
+  'collections/LastWeekCollection',
   'router',
   'dataManager',
   'jquery_ui_touch_punch'
   ], 
-  function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, MenuModel, ShareModel, detailView, CardsView, MenuView, ShareView, EndView, LastWeekView, DressCollection, router, dataManager) {
+  function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, MenuModel, ShareModel, detailView, CardsView, MenuView, ShareView, EndView, LastWeekView, DressCollection, LastWeekCollection, router, dataManager) {
 
   return Backbone.View.extend({
     el: ".iapp-page-wrap",
@@ -53,7 +54,7 @@ define([
       this.menuView = new MenuView({model: new MenuModel()});
       this.dressCollection = new DressCollection(dataManager.data.people); 
       this.cardsView = new CardsView({collection: this.dressCollection});
-      this.lastWeekCollection = new DressCollection(this.dressCollection.where({'last_week': true}));
+      this.lastWeekCollection = new LastWeekCollection(this.dressCollection.where({'last_week': true}));
       this.lastWeekView = new LastWeekView({collection: this.lastWeekCollection});
       this.$el.append(this.lastWeekView.el);
       Backbone.history.start();
@@ -73,6 +74,7 @@ define([
 
     onAppReset: function() {
       this.$el.removeClass('iapp-last-week-route');
+      console.log(this.dressCollection.where({'highligh': true}));
     },
 
     onBeginClick: function() {

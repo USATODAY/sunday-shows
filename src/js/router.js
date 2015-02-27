@@ -20,20 +20,6 @@
       },
 
 
-      like: function(likestring) {
-        Backbone.trigger('route:share');
-        Backbone.trigger('route:like', likestring);
-      },
-
-      dislike: function(dislikestring) {
-        Backbone.trigger('route:share');
-        Backbone.trigger('route:dislike', dislikestring);
-      },
-
-      both: function(likestring, dislikestring) {
-        Backbone.trigger('route:share');
-        Backbone.trigger('route:both', likestring, dislikestring);
-      },
       lastWeek: function() {
         Backbone.trigger('route:last-week');
       }

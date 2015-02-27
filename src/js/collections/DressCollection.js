@@ -16,11 +16,6 @@ define([
       initialize: function() {
 
         this.listenTo(Backbone, "filters:update", this.onFilterUpdate);
-        this.on('change:isLiked', this.onLikedChange);
-        this.on('change:isDisliked', this.onDislikedChange);
-        this.listenTo(Backbone, 'route:like', this.onRouteLike);
-        this.listenTo(Backbone, 'route:dislike', this.onRouteDislike);
-        this.listenTo(Backbone, 'route:both', this.onRouteBoth);
         this.listenTo(Backbone, 'app:reset', this.onResetApp);
       },
 
@@ -30,7 +25,6 @@ define([
       onFilterUpdate: function(filterArray) {
            this.filterByTagArray(filterArray);
            var availableTags = this.getAvailableTags();
-           console.log(availableTags);
            Backbone.trigger("items:filtered", availableTags);
       },
 
@@ -155,9 +149,10 @@ define([
         },
 
         onResetApp: function() {
-          this.each(function(dressModel) {
-            dressModel.unlike();
-            dressModel.undislike();
+            console.log('reset');
+          this.each(function(model) {
+              console.log('set highlight to false');
+            model.set({'highlight': false});
           });
         }
 

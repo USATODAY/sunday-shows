@@ -3,8 +3,9 @@ define(
     'jquery',
     'underscore',
     'backbone',
+    'router',
     'models/TagModel'
-  ], function(jQuery, _, Backbone, TagModel){
+  ], function(jQuery, _, Backbone, router, TagModel){
 
     return Backbone.Collection.extend({
         model: TagModel,
@@ -22,13 +23,17 @@ define(
                 return model.get('tagName');
             });
 
-            
+            if (filterArray.length === 0) {
+                router.navigate('/_');
+            } else {
+                var filterSlug = filterArray.join('-');
+                router.navigate('filters/' + filterSlug);
+            }
 
             Backbone.trigger('filters:update', filterArray);
         },
 
         onItemsFiltered: function(availableTags) {
-            
             
             this.each(function(model) {
 
@@ -52,6 +57,7 @@ define(
             this.each(function(tag) {
                 tag.set({'isActive': false});
             });
+            // router.navigate('/_');
         },
         onLikedUpdate: function(likeArray) {
             var numLiked = likeArray.length;
