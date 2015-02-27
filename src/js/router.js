@@ -8,20 +8,24 @@
 
       routes: {
         "": "home",
-        'likes/:likestring': 'like',
-        'dislikes/:dislikestring': 'dislike',
-        'likes/:likestring/dislikes/:dislikestring': 'both',
-        'last-week/': 'lastWeek'
+        "_": "home",
+        'last-week/': 'lastWeek',
+        'filters/:filterStr': 'filters'
         
       },
 
       home: function() {
-         this.trigger("homeRoute");
+        Backbone.trigger('app:reset');
       },
 
 
       lastWeek: function() {
         Backbone.trigger('route:last-week');
+      },
+
+      filters: function(filterStr) {
+        var filterArray = filterStr.split('-');
+        Backbone.trigger('route:filters', filterArray);
       }
 
     });

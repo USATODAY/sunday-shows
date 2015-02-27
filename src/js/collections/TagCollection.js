@@ -14,8 +14,8 @@ define(
             this.on('change:isActive', this.onActiveChange); 
             this.listenTo(Backbone, 'items:filtered', this.onItemsFiltered);
             this.listenTo(Backbone, 'tags:reset', this.onTagsReset);
-            this.listenTo(Backbone, 'liked:update', this.onLikedUpdate);
-            this.listenTo(Backbone, 'disliked:update', this.onDislikedUpdate);
+            this.listenTo(Backbone, 'route:filters', this.onFilterRoute);
+            this.listenTo(Backbone, 'app:reset', this.onAppReset);
         },
 
         onActiveChange: function() {
@@ -30,11 +30,11 @@ define(
                 router.navigate('filters/' + filterSlug);
             }
 
+
             Backbone.trigger('filters:update', filterArray);
         },
 
         onItemsFiltered: function(availableTags) {
-            
             this.each(function(model) {
 
                 // show all the tags that dont show up in the remaining available tags
@@ -57,29 +57,16 @@ define(
             this.each(function(tag) {
                 tag.set({'isActive': false});
             });
-            // router.navigate('/_');
         },
-        onLikedUpdate: function(likeArray) {
-            var numLiked = likeArray.length;
-            var likedTag = this.find(function(tag) {
-               return tag.get('tagName') == 'iapp-liked';
-            });
-            if (numLiked > 0) {
-                likedTag.set({'isAvailable': true});
-            } else {
-                likedTag.set({'isAvailable': false});
-            }
+        onFilterRoute: function(filterArray) {
+            var _this = this; 
+            _.each(filterArray, function(filter) {
+                var filterModel = _this.findWhere({'tagName': filter});
+                filterModel.set({'isActive': true});
+             });
         },
-        onDislikedUpdate: function(dislikeArray) {
-            var numDisliked = dislikeArray.length;
-            var dislikedTag = this.find(function(tag) {
-               return tag.get('tagName') == 'iapp-disliked';
-            });
-            if (numDisliked > 0) {
-                dislikedTag.set({'isAvailable': true});
-            } else {
-                dislikedTag.set({'isAvailable': false});
-            }
+        onAppReset: function() {
+            this.onTagsReset();
         }
              
         

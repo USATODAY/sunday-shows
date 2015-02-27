@@ -56,7 +56,6 @@ define([
         },
 
         removeCard: function(model) {
-            console.log(model);
 
             if(!model.get('highlight')) {
             

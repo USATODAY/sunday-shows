@@ -74,7 +74,6 @@ define([
 
     onAppReset: function() {
       this.$el.removeClass('iapp-last-week-route');
-      console.log(this.dressCollection.where({'highligh': true}));
     },
 
     onBeginClick: function() {

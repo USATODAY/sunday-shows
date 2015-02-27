@@ -57,14 +57,10 @@ define([
       var _this = this;
       $el.isotope( {
           itemSelector: '.card',
-          transitionDuration: (!config.isMobile) ? '0.4s' : 0,
+          transitionDuration: (!config.isMobile) ? '0' : 0,
           getSortData: {
-            liked: function(itemElem) {
-              if (jQuery(itemElem).hasClass('iapp-liked')) {
-                return 'liked';
-              } else {
-                return 'not-liked';
-              }
+            numAppearances: function(itemElem) {
+              return jQuery(itemElem).data('num-appearances');
             }
           }
         });
@@ -87,13 +83,8 @@ define([
       });
     }, 
 
-    removeHighlight: function() {
-      Analytics.click("closed card");
-     this.detailView.model.set({"highlight": false});
-    },
 
     filter: function(filterArray) {
-          
         filterArray = _.map(filterArray, function(filter) {
           return '.' + filter;
         });

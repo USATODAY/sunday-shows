@@ -19,16 +19,12 @@ define([
 
             initialize: function() {
                 this.listenTo(this.collection, 'change:highlight', this.showDetail);
-                console.log(this.collection.toJSON()); 
                 this.render();
-                console.log(this);
             },
             className: 'iapp-last-week-wrap',
             template: templates['lastWeekView.html'],
             render: function() {
                 this.sortCollection();
-                console.log('sorted collection: ');
-                console.log(this.sortedCollection);
                 var _this = this;
                 _.each(this.sortedCollection, function(networkArray) {
                     _this.$el.append(_this.template({networkGuests: networkArray}));
@@ -42,10 +38,7 @@ define([
             sortCollection: function() {
                 var sortedCollectionObj = {};
                 this.collection.each(function(itemModel) {
-                    console.log("itemModel: ");
-                    console.log(itemModel);
                     _.each(itemModel.get('last_week_appearances'), function(_network) {
-                        console.log(_network);
                         if (sortedCollectionObj[_network] === undefined) {
                             sortedCollectionObj[_network] = [];
                         }
@@ -64,13 +57,11 @@ define([
               }
             },
             onCardClick: function(e) {
-                console.log(e.currentTarget);
                 var $target = $(e.currentTarget);
                 var guest = $target.find('.iapp-card-info-header').text();
                 var model = this.collection.find(function(model){
                     return model.get('guest') == guest;
                 });
-                console.log(model);
                 model.set({'highlight': true});
             }
 
