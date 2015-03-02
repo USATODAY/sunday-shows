@@ -59,10 +59,12 @@ define([
           itemSelector: '.card',
           transitionDuration: (!config.isMobile) ? '0' : 0,
           getSortData: {
-            numAppearances: function(itemElem) {
-              return jQuery(itemElem).data('num-appearances');
+            appearances: function(itemElem) {
+              return parseInt(jQuery(itemElem).data('appearances'));
             }
-          }
+          },
+          sortBy: 'appearances',
+          sortAscending: false
         });
       
       $el.imagesLoaded( function() {
