@@ -45,7 +45,7 @@ this["templates"]["card-front.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="iapp-card-front-image-wrap">\n    <img class="cover-img" src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/load.png" data-src=\'' +
+__p += '<div class="iapp-card-front-image-wrap">\n    <img class="cover-img" src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/load.png" data-src=\'' +
 ((__t = (photo_url)) == null ? '' : __t) +
 '\'alt="' +
 ((__t = (guest)) == null ? '' : __t) +
