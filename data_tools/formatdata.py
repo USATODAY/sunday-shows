@@ -36,17 +36,17 @@ def create_appearance_dict(appearance):
         new_appearance_dict['last_week'] = False
 
     # check for which network the appearance was on
-    if appearance["Fox"].lower() == "x":
+    if appearance["Fox"].lower().strip() == "x":
         new_appearance_dict["network"] = "Fox"
-    elif appearance["ABC"].lower() == "x":
+    elif appearance["ABC"].lower().strip() == "x":
         new_appearance_dict["network"] = "ABC"
-    elif appearance["CBS"].lower() == "x":
+    elif appearance["CBS"].lower().strip() == "x":
         new_appearance_dict["network"] = "CBS"
-    elif appearance["NBC"].lower() == "x":
+    elif appearance["NBC"].lower().strip() == "x":
         new_appearance_dict["network"] = "NBC"
-    elif appearance["CNN"].lower() == "x":
+    elif appearance["CNN"].lower().strip() == "x":
         new_appearance_dict["network"] = "CNN"
-    elif appearance["Univision"].lower() == "x":
+    elif appearance["Univision"].lower().strip() == "x":
         new_appearance_dict["network"] = "Univision"
     
     return new_appearance_dict
@@ -138,85 +138,90 @@ def format_data():
 
     for appearance in appearance_list:
         guest_name = appearance['Guest'].strip()
-        # check if person is already in our dict
-        if not guest_name in people_dict.keys():
-            #create person dict based on info
-            new_person_dict = {
-                "guest": guest_name, 
-                "party": appearance["Party"],
-                "state": appearance["State"],
-                "race": appearance["Race"],
-                "gender": appearance["Gender"],
-                "description": appearance["Description"],
-                "last_week": False,
-                "last_week_appearances": [],
-                "total_appearances": 0
-            }
+        if not guest_name == "":
+            # check if person is already in our dict
+            if not guest_name in people_dict.keys():
+                #create person dict based on info
+                new_person_dict = {
+                    "guest": guest_name, 
+                    "party": appearance["Party"],
+                    "state": appearance["State"],
+                    "race": appearance["Race"],
+                    "gender": appearance["Gender"],
+                    "description": appearance["Description"],
+                    "last_week": False,
+                    "last_week_appearances": [],
+                    "total_appearances": 0,
+                    "image_name": appearance["image_name"],
+                    "image_credit": appearance["image_credit"]
+                }
 
-            # fix gender to full words
-            if new_person_dict["gender"].lower().strip() == "f":
-                new_person_dict["gender"] = "female"
-            elif new_person_dict["gender"].lower().strip() == "m":
-                new_person_dict["gender"] = "male"
-            # check for boolean values on appearance
-            if appearance["House"].lower() == "x":
-                new_person_dict["house"] = True
-            else:
-                new_person_dict["house"] = False
-            if appearance["Senate"].lower() == "x":
-                new_person_dict["senate"] = True
-            else:
-                new_person_dict["senate"] = False
-            if appearance["Admin."].lower() == "x":
-                new_person_dict["admin"] = True
-            else:
-                new_person_dict["admin"] = False
-            if appearance["Other Political"].lower() == "x":
-                new_person_dict["other_political"] = True
-            else:
-                new_person_dict["other_political"] = False
+                # fix gender to full words
+                if new_person_dict["gender"].lower().strip() == "f":
+                    new_person_dict["gender"] = "female"
+                elif new_person_dict["gender"].lower().strip() == "m":
+                    new_person_dict["gender"] = "male"
+                # check for boolean values on appearance
+                if appearance["House"].lower() == "x":
+                    new_person_dict["house"] = True
+                else:
+                    new_person_dict["house"] = False
+                if appearance["Senate"].lower() == "x":
+                    new_person_dict["senate"] = True
+                else:
+                    new_person_dict["senate"] = False
+                if appearance["Admin."].lower() == "x":
+                    new_person_dict["admin"] = True
+                else:
+                    new_person_dict["admin"] = False
+                if appearance["Other Political"].lower() == "x":
+                    new_person_dict["other_political"] = True
+                else:
+                    new_person_dict["other_political"] = False
 
-            if appearance["Journalist"].lower() == "x":
-                new_person_dict["journalist"] = True
-            else:
-                new_person_dict["journalist"] = False
-            if appearance["Other"].lower() == "x":
-                new_person_dict["other"] = True
-            else:
-                new_person_dict["other"] = False
+                if appearance["Journalist"].lower() == "x":
+                    new_person_dict["journalist"] = True
+                else:
+                    new_person_dict["journalist"] = False
+                if appearance["Other"].lower() == "x":
+                    new_person_dict["other"] = True
+                else:
+                    new_person_dict["other"] = False
 
-            new_person_dict["appearances"] = []
+                new_person_dict["appearances"] = []
 
-            new_appearance_dict = create_appearance_dict(appearance)
+                new_appearance_dict = create_appearance_dict(appearance)
 
-            # Increment total appearance number
-            new_person_dict["total_appearances"] = new_person_dict["total_appearances"] + 1
+                # Increment total appearance number
+                new_person_dict["total_appearances"] = new_person_dict["total_appearances"] + 1
 
-            if new_appearance_dict["last_week"] == True:
-                new_person_dict["last_week"] = True
-                new_person_dict["last_week_appearances"].append(new_appearance_dict["network"])
+                if new_appearance_dict["last_week"] == True:
+                    new_person_dict["last_week"] = True
+                    new_person_dict["last_week_appearances"].append(new_appearance_dict["network"])
 
-            new_person_dict["appearances"].append(new_appearance_dict)
+                new_person_dict["appearances"].append(new_appearance_dict)
 
-            #add them to the dict
-            people_dict[guest_name] = new_person_dict
-        
-        # if person is already in the dictionary
-        else:
-            #create a new appearance dictionary
-            new_appearance_dict = create_appearance_dict(appearance)
+                #add them to the dict
+                people_dict[guest_name] = new_person_dict
             
-            # Increment total appearance number
-            people_dict[guest_name]["total_appearances"] = people_dict[guest_name]["total_appearances"] + 1
+            # if person is already in the dictionary
+            else:
+                #create a new appearance dictionary
+                new_appearance_dict = create_appearance_dict(appearance)
+                
+                # Increment total appearance number
+                people_dict[guest_name]["total_appearances"] = people_dict[guest_name]["total_appearances"] + 1
 
-            if new_appearance_dict["last_week"] == True:
-                people_dict[guest_name]["last_week"] = True
-                people_dict[guest_name]["last_week_appearances"].append(new_appearance_dict["network"])
+                if new_appearance_dict["last_week"] == True:
+                    people_dict[guest_name]["last_week"] = True
+                    people_dict[guest_name]["last_week_appearances"].append(new_appearance_dict["network"])
 
-            #append it to the existing person appearance list
-            people_dict[guest_name]["appearances"].append(new_appearance_dict)
-        
-        people_dict[guest_name]["tags"] = list(set(create_tag_list(people_dict[guest_name])))
+                #append it to the existing person appearance list
+                people_dict[guest_name]["appearances"].append(new_appearance_dict)
+            
+            people_dict[guest_name]["tags"] = list(set(create_tag_list(people_dict[guest_name])))
+        else:
+            pass
 
     # now iterate over people dictionary and flatten into a list of people
 

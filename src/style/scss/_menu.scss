@@ -34,7 +34,7 @@
 .iapp-menu-hide {
     position: absolute;
   .iapp-menu-panel {
-    transform: translate(-120%, 0);
+    transform: translate(-600%, 0);
   }
   .iapp-menu-button {
     transform: translate(50%, 0);
@@ -154,8 +154,8 @@
 
 
 .iapp-menu-scoreboard {
-  background: rgba(0, 0, 0, 0.8);
-  @include BoxShadowHelper(2);
+  // background: rgba(0, 0, 0, 0.8);
+  // @include BoxShadowHelper(2);
   height: 8em;
   padding: 0 1em;
   width: 100%;
