@@ -194,8 +194,7 @@ module.exports = function(grunt) {
             "jquery",
             "underscore",
             "backbone"
-            ]
-          },
+            ],
           "baseUrl": "<%=config.src%>js",
           "out": "<%=config.build%>js/main.js",
           "preserveLicenseComments": false,   
@@ -227,6 +226,7 @@ module.exports = function(grunt) {
             }
           }
         }
+      }
     },
 
     copy: {
