@@ -34,8 +34,11 @@ define(
                     
 
                    console.warn('temp dummy data');
-
-                   dataObj.photo_url = _this.base_url + dataObj.guest.split(" ").join("") + '.jpg';
+                   if (dataObj.image_name !== '') {
+                       dataObj.photo_url = _this.base_url + dataObj.image_name;
+                   } else {
+                       dataObj.photo_url = _this.base_url + 'person.jpg';
+                   }
                    dataObj.photo_credit = '';
                     temp_i ++;
                     // dataObj.photo_url = _this.base_url + dataObj.photo_filename + '.jpg';

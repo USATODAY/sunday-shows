@@ -57,7 +57,7 @@ define([
       var _this = this;
       $el.isotope( {
           itemSelector: '.card',
-          transitionDuration: (!config.isMobile) ? '0' : 0,
+          transitionDuration: (!config.isMobile) ? '0.2s' : 0,
           getSortData: {
             appearances: function(itemElem) {
               return parseInt(jQuery(itemElem).data('appearances'));

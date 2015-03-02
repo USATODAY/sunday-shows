@@ -314,4 +314,5 @@
     padding: 0.25em;
     position: absolute;
     width: 30px;
+    @include BoxShadowHelper(2);
 }
