@@ -78,9 +78,7 @@ define([
 
     onBeginClick: function() {
         this.$('.iapp-begin-button').addClass('iapp-transition-out');
-        _.delay(function() {
-            this.$('.iapp-intro-wrap').fadeOut();
-        }, 500);
+        this.$('.iapp-intro-wrap').fadeOut();
     },
 
     onRouteLastWeek: function() {

@@ -36,17 +36,17 @@ def create_appearance_dict(appearance):
         new_appearance_dict['last_week'] = False
 
     # check for which network the appearance was on
-    if appearance["Fox"].lower() == "x":
+    if appearance["Fox"].lower().strip() == "x":
         new_appearance_dict["network"] = "Fox"
-    elif appearance["ABC"].lower() == "x":
+    elif appearance["ABC"].lower().strip() == "x":
         new_appearance_dict["network"] = "ABC"
-    elif appearance["CBS"].lower() == "x":
+    elif appearance["CBS"].lower().strip() == "x":
         new_appearance_dict["network"] = "CBS"
-    elif appearance["NBC"].lower() == "x":
+    elif appearance["NBC"].lower().strip() == "x":
         new_appearance_dict["network"] = "NBC"
-    elif appearance["CNN"].lower() == "x":
+    elif appearance["CNN"].lower().strip() == "x":
         new_appearance_dict["network"] = "CNN"
-    elif appearance["Univision"].lower() == "x":
+    elif appearance["Univision"].lower().strip() == "x":
         new_appearance_dict["network"] = "Univision"
     
     return new_appearance_dict
@@ -138,7 +138,6 @@ def format_data():
 
     for appearance in appearance_list:
         guest_name = appearance['Guest'].strip()
-        print guest_name
         if not guest_name == "":
             # check if person is already in our dict
             if not guest_name in people_dict.keys():
@@ -222,7 +221,7 @@ def format_data():
             
             people_dict[guest_name]["tags"] = list(set(create_tag_list(people_dict[guest_name])))
         else:
-            print "empty"
+            pass
 
     # now iterate over people dictionary and flatten into a list of people
 
