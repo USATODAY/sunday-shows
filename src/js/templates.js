@@ -50,7 +50,7 @@ __p += '<div class="iapp-card-front-image-wrap">\n    <img class="cover-img" src
 '\'alt="' +
 ((__t = (guest)) == null ? '' : __t) +
 '">\n    <div class="iapp-card-front-number">\n       <div class="iapp-card-front-number-inner ">\n           ' +
-((__t = (total_appearances)) == null ? '' : __t) +
+((__t = (filteredAppearancesTotal)) == null ? '' : __t) +
 '\n       </div>\n    </div>\n</div>\n<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
 ((__t = ( guest)) == null ? '' : __t) +
 '</h2>\n    <p class="iapp-card-info-text">' +

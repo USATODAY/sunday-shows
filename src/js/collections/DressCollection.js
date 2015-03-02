@@ -22,7 +22,7 @@ define([
       // Reference to this collection's model.
       model: dressModel,
 
-      onFilterUpdate: function(filterArray) {
+      onFilterUpdate: function(filterArray, networkArray) {
            this.filterByTagArray(filterArray);
            var availableTags = this.getAvailableTags();
            Backbone.trigger("items:filtered", availableTags);

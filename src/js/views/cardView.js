@@ -11,8 +11,8 @@ define([
       tagName: "div",
 
       initialize: function() {
-        this.listenTo(this.model, 'change:isLiked', this.onLikedChange);
-        this.listenTo(this.model, 'change:isDisliked', this.onLikedChange);
+        
+          this.listenTo(this.model, 'change:filteredAppearancesTotal', this.onAppearancesChange);
       },
 
       className: function() {
@@ -35,11 +35,8 @@ define([
       template: templates["card-front.html"],
 
       render: function() {
-        this.$el.html(this.template(this.model.attributes));
-        _.each(this.model.attributes.category, function(v, i) {
-          this.$el.addClass(v);
-          this.$el.attr('data-category', v);
-        }, this);
+        this.$el.attr('data-appearances', this.model.get('filteredAppearancesTotal'));
+        this.$el.html(this.template(this.model.toJSON()));
 
         return this;
       },
@@ -51,52 +48,9 @@ define([
         });
       },
 
-      onLikeClick: function(e) {
-
-        console.log('like click'); 
-        this.model.undislike();
-        if (!this.model.get('isLiked')) {
-          
-          this.model.like();
-        } else {
-        
-          this.model.unlike();
-        }
-        
-        e.stopImmediatePropagation();
-        
-      },
-
-      onDislikeClick: function(e) {
-        
-        this.model.unlike();
-
-        if (!this.model.get('isDisliked')) {
-          
-          this.model.dislike();
-        } else {
-          
-          this.model.undislike();
-        }
-        e.stopImmediatePropagation();
-        
-      },
-
-      onLikedChange: function() {
-        
-          
-          if (this.model.get('isLiked')) {
-            this.$el.addClass('iapp-liked');
-          } else {
-            this.$el.removeClass('iapp-liked');
-          }
-
-          if (this.model.get('isDisliked')) {
-            this.$el.addClass('iapp-disliked');
-          } else {
-            this.$el.removeClass('iapp-disliked');
-          }
-          console.log('like change');
+      onAppearancesChange: function() {
+        this.$el.attr('data-appearances', this.model.get('filteredAppearancesTotal'));
+        this.$('.iapp-card-front-number-inner').text(this.model.get('filteredAppearancesTotal'));
       }
     });
 
