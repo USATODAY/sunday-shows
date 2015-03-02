@@ -149,7 +149,8 @@ def format_data():
                 "gender": appearance["Gender"],
                 "description": appearance["Description"],
                 "last_week": False,
-                "last_week_appearances": []
+                "last_week_appearances": [],
+                "total_appearances": 0
             }
 
             # fix gender to full words
@@ -187,6 +188,10 @@ def format_data():
             new_person_dict["appearances"] = []
 
             new_appearance_dict = create_appearance_dict(appearance)
+
+            # Increment total appearance number
+            new_person_dict["total_appearances"] = new_person_dict["total_appearances"] + 1
+
             if new_appearance_dict["last_week"] == True:
                 new_person_dict["last_week"] = True
                 new_person_dict["last_week_appearances"].append(new_appearance_dict["network"])
@@ -200,6 +205,9 @@ def format_data():
         else:
             #create a new appearance dictionary
             new_appearance_dict = create_appearance_dict(appearance)
+            
+            # Increment total appearance number
+            people_dict[guest_name]["total_appearances"] = people_dict[guest_name]["total_appearances"] + 1
 
             if new_appearance_dict["last_week"] == True:
                 people_dict[guest_name]["last_week"] = True
@@ -208,7 +216,7 @@ def format_data():
             #append it to the existing person appearance list
             people_dict[guest_name]["appearances"].append(new_appearance_dict)
         
-        new_person_dict["tags"] = create_tag_list(new_person_dict)
+        people_dict[guest_name]["tags"] = list(set(create_tag_list(people_dict[guest_name])))
 
     # now iterate over people dictionary and flatten into a list of people
 

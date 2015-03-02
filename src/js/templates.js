@@ -49,7 +49,9 @@ __p += '<div class="iapp-card-front-image-wrap">\n    <img class="cover-img" src
 ((__t = (photo_url)) == null ? '' : __t) +
 '\'alt="' +
 ((__t = (guest)) == null ? '' : __t) +
-'">\n</div>\n<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
+'">\n    <div class="iapp-card-front-number">\n       <div class="iapp-card-front-number-inner ">\n           ' +
+((__t = (total_appearances)) == null ? '' : __t) +
+'\n       </div>\n    </div>\n</div>\n<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
 ((__t = ( guest)) == null ? '' : __t) +
 '</h2>\n    <p class="iapp-card-info-text">' +
 ((__t = (description)) == null ? '' : __t) +

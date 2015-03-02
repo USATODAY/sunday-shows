@@ -303,3 +303,15 @@
   color: $medium-grey;
   font-size: 0.8em;
 }
+
+.iapp-card-front-number{
+    background-color: $blue;
+    bottom: 5px;
+    border-radius: 50%;
+    color: white;
+    height: 30px;
+    left: 5px;
+    padding: 0.25em;
+    position: absolute;
+    width: 30px;
+}
