@@ -63,4 +63,3 @@ def upload_file(ftp_connetion, upload_file_path):
 
     except IOError:
         print ("No such file or directory... passing to next file")
-        slack_notify("error in file upload", "@mitchthorson")
