@@ -5,6 +5,7 @@ from fabric.operations import local as run
 from data_tools.ftpup import connect_ftp, upload_file
 import os
 
+slack_channel = "@mitchthorson"
 
 def create_absolute_path(relative_path):
     return os.path.join(os.path.dirname(__file__), relative_path)
@@ -21,7 +22,11 @@ copy_json = create_absolute_path('data_tools/src/copy.json')
 
 def updater(target="dev"):
     print ("Downloading new data file from Google...")
-    get_data()
+    try:
+        get_data()
+    except:
+        slack_notify("Hello, I had a problem downloading the Sunday Talk show spreadsheet from Google.", slack_channel)
+        raise
     print ("Converting to JSON...")
     # remove files if they already exist
     try:
@@ -49,20 +54,28 @@ def updater(target="dev"):
     except:
         pass
     # convert excel sheet into 3 CSVs
-    run ("in2csv %s --sheet Sheet1 > %s" % (master_spreadsheet, data_csv))
-    run ("in2csv %s --sheet filters > %s" % (master_spreadsheet, filter_csv))
-    run ("in2csv %s --sheet copy > %s" % (master_spreadsheet, copy_csv))
-    run("csvjson %s > %s" % (data_csv, data_json))
-    run("csvjson %s > %s" % (filter_csv, filter_json))
-    run("csvjson %s > %s" % (copy_csv, copy_json))
+    try:
+        run ("in2csv %s --sheet Sheet1 > %s" % (master_spreadsheet, data_csv))
+        run ("in2csv %s --sheet filters > %s" % (master_spreadsheet, filter_csv))
+        run ("in2csv %s --sheet copy > %s" % (master_spreadsheet, copy_csv))
+        run("csvjson %s > %s" % (data_csv, data_json))
+        run("csvjson %s > %s" % (filter_csv, filter_json))
+        run("csvjson %s > %s" % (copy_csv, copy_json))
+    except:
+        slack_notify("Hello, I was unable to convert the latest sunday talk show data correctly.", slack_channel)
+        raise
     print("Formatting data...")
-    format_data()
+    try:
+        format_data()
+    except:
+        slack_notify("Hello, I was unable to format the latest data file correctly.", slack_channel)
+        raise
     print("Uploading data...")
     try:
         ftp_conn = connect_ftp()
         ftp_conn.cwd("usatoday/2015/03/sunday-shows/data/")
         upload_file(ftp_conn, create_absolute_path('data_tools/output/data.json'))
+        slack_notify("Hello! The Sunday Talk Show interactive data has been updated successfully.", slack_channel)
     except:
-        slack_notify("I had a problem uploading the new data to the server.", "@mitchthorson")
+        slack_notify("I had a problem uploading the new data to the server.", slack_channel)
 
-    slack_notify("Talk show data updated successfully", "@mitchthorson")
