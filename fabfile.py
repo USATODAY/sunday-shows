@@ -58,9 +58,9 @@ def updater(target="dev"):
     print("Formatting data...")
     format_data()
     print("Uploading data...")
-    ftp_conn = connect_ftp()
-    ftp_conn.cwd("usatoday/2015/03/sunday-shows/data/")
     try:
+        ftp_conn = connect_ftp()
+        ftp_conn.cwd("usatoday/2015/03/sunday-shows/data/")
         upload_file(ftp_conn, create_absolute_path('data_tools/output/data.json'))
     except:
         slack_notify("I had a problem uploading the new data to the server.", "@mitchthorson")
