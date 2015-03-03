@@ -24,7 +24,9 @@ Once those dependencies are set up, from this repository run `npm install`, then
 
 ##Data tools
 
-This project's data tools assume that you have a Python virtual envirement set up, with USA TODAY's Google credentials stored as $GOOGLE_USER and $GOOGLE_PASS environment variables.
+This project's data tools assume that you have a Python virtual envirement set up, with USA TODAY's Google credentials stored as `$GOOGLE_USER` and `$GOOGLE_PASS` environment variables.
+
+In order for data upload to work, `$FTP_USER`, `$FTP_PASS`, and `$FTP_SERVER` must also be stored as environment variables.
 
 To work with this project's data tools, first install dependencies with `pip install -r requirements.txt`
 
