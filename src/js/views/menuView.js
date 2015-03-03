@@ -2,7 +2,7 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    "analytics",
+    "api/analytics",
     "dataManager",
     "templates",
     "models/config",
@@ -53,10 +53,12 @@ define([
                 }
             },
             onCloseClick: function() {
+                Analytics.trackEvent("Close menu button clicked");
                 this.model.set({isMenuOpen: false});
                 // $('body,html').removeClass('iapp-no-scroll');
             },
             onMenuClick: function() {
+                Analytics.trackEvent("Open menu button clicked");
                 this.model.set({isMenuOpen: true});
                 if (window.innerWidth < this.model.mobileThreshhold) {
                      // $('body,html').addClass('iapp-no-scroll');

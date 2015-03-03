@@ -2,7 +2,7 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    "analytics",
+    "api/analytics",
     "templates"
   ],
   function(jQuery, _, Backbone, Analytics, templates) {
@@ -42,7 +42,7 @@ define([
       },
 
       setHighlight: function() {
-        Analytics.click("opened card");
+        Analytics.trackEvent("opened card");
         this.model.set({
           "highlight": true
         });

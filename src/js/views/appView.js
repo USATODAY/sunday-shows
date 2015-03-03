@@ -4,7 +4,7 @@ define([
   'jquery',
   'imagesloaded',
   'isotope',
-  'analytics',
+  'api/analytics',
   'underscore',
   'lib/BackboneRouter',
   'templates',
@@ -76,11 +76,13 @@ define([
     },
 
     onBeginClick: function() {
+        Analytics.trackEvent('Begin button clicked');
         this.$('.iapp-begin-button').addClass('iapp-transition-out');
         this.$('.iapp-intro-wrap').fadeOut();
     },
 
     onRouteLastWeek: function() {
+        Analytics.trackEvent('Last week guests page viewed');
         this.$el.addClass('iapp-last-week-route');
         this.menuView.model.set({'isMenuOpen': false});
     }

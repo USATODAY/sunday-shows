@@ -2,7 +2,7 @@ define([
     "jquery", 
     "underscore", 
     "backbone", 
-    "analytics", 
+    "api/analytics", 
     "templates",
     "models/config",
     "router"
