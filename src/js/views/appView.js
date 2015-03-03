@@ -48,7 +48,7 @@ define([
     },
 
     addSubViews: function() {
-      this.shareModel = new ShareModel();
+      this.shareModel = new ShareModel({default_share_language: dataManager.data.copy.default_share_language});
       this.shareView = new ShareView({model: this.shareModel});
       this.menuView = new MenuView({model: new MenuModel()});
       this.itemsCollection = new ItemsCollection(dataManager.data.people); 
