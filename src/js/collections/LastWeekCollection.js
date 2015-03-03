@@ -5,8 +5,8 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    'models/dressModel',
-], function($, _, Backbone, dressModel) {
+    'models/ItemModel',
+], function($, _, Backbone, ItemModel) {
 
    
 
@@ -14,7 +14,7 @@ define([
     return Backbone.Collection.extend({
 
       // Reference to this collection's model.
-      model: dressModel,
+      model: ItemModel,
 
     });
 

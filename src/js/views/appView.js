@@ -4,7 +4,7 @@ define([
   'jquery',
   'imagesloaded',
   'isotope',
-  'analytics',
+  'api/analytics',
   'underscore',
   'lib/BackboneRouter',
   'templates',
@@ -15,15 +15,14 @@ define([
   'views/cardsView',
   'views/menuView',
   'views/shareView',
-  'views/endView',
   'views/LastWeekView',
-  'collections/DressCollection',
+  'collections/ItemsCollection',
   'collections/LastWeekCollection',
   'router',
   'dataManager',
   'jquery_ui_touch_punch'
   ], 
-  function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, MenuModel, ShareModel, detailView, CardsView, MenuView, ShareView, EndView, LastWeekView, DressCollection, LastWeekCollection, router, dataManager) {
+  function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, MenuModel, ShareModel, detailView, CardsView, MenuView, ShareView, LastWeekView, ItemsCollection, LastWeekCollection, router, dataManager) {
 
   return Backbone.View.extend({
     el: ".iapp-page-wrap",
@@ -52,9 +51,9 @@ define([
       this.shareModel = new ShareModel();
       this.shareView = new ShareView({model: this.shareModel});
       this.menuView = new MenuView({model: new MenuModel()});
-      this.dressCollection = new DressCollection(dataManager.data.people); 
-      this.cardsView = new CardsView({collection: this.dressCollection});
-      this.lastWeekCollection = new LastWeekCollection(this.dressCollection.where({'last_week': true}));
+      this.itemsCollection = new ItemsCollection(dataManager.data.people); 
+      this.cardsView = new CardsView({collection: this.itemsCollection});
+      this.lastWeekCollection = new LastWeekCollection(this.itemsCollection.where({'last_week': true}));
       this.lastWeekView = new LastWeekView({collection: this.lastWeekCollection});
       this.$el.append(this.lastWeekView.el);
       Backbone.history.start();
@@ -77,11 +76,13 @@ define([
     },
 
     onBeginClick: function() {
+        Analytics.trackEvent('Begin button clicked');
         this.$('.iapp-begin-button').addClass('iapp-transition-out');
         this.$('.iapp-intro-wrap').fadeOut();
     },
 
     onRouteLastWeek: function() {
+        Analytics.trackEvent('Last week guests page viewed');
         this.$el.addClass('iapp-last-week-route');
         this.menuView.model.set({'isMenuOpen': false});
     }

@@ -170,7 +170,7 @@ module.exports = function(grunt) {
             "underscore": '../../bower_components/underscore/underscore',
             "jquery_ui": "lib/jquery-ui.min",
             "jquery_ui_touch_punch": "lib/jquery.ui.touch-punch.min",
-            "analytics": "lib/analytics",
+            "api/analytics": "lib/analytics",
             "mobile_detect": "lib/mobile-detect",
             "isotope": "../../bower_components/isotope/dist/isotope.pkgd",
             "imagesloaded": "../../bower_components/imagesloaded/imagesloaded.pkgd",
@@ -193,7 +193,8 @@ module.exports = function(grunt) {
           "exclude": [
             "jquery",
             "underscore",
-            "backbone"
+            "backbone",
+            "api/analytics"
             ],
           "baseUrl": "<%=config.src%>js",
           "out": "<%=config.build%>js/main.js",
@@ -210,7 +211,7 @@ module.exports = function(grunt) {
             "underscore": '../../bower_components/underscore/underscore',
             "jquery_ui": "lib/jquery-ui.min",
             "jquery_ui_touch_punch": "lib/jquery.ui.touch-punch.min",
-            "analytics": "lib/analytics",
+            "api/analytics": "lib/analytics",
             "mobile_detect": "lib/mobile-detect",
             "isotope": "../../bower_components/isotope/dist/isotope.pkgd",
             "imagesloaded": "../../bower_components/imagesloaded/imagesloaded.pkgd",

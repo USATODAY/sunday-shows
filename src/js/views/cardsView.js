@@ -2,7 +2,7 @@ define([
   'jquery',
   'imagesloaded',
   'isotope',
-  'analytics',
+  'api/analytics',
   'underscore',
   'lib/BackboneRouter',
   'templates',

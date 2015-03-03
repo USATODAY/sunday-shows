@@ -5,8 +5,8 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    'models/dressModel',
-], function($, _, Backbone, dressModel) {
+    'models/ItemModel',
+], function($, _, Backbone, ItemModel) {
 
    
 
@@ -20,7 +20,7 @@ define([
       },
 
       // Reference to this collection's model.
-      model: dressModel,
+      model: ItemModel,
 
       onFilterUpdate: function(filterArray, networkArray) {
            this.filterByTagArray(filterArray);
