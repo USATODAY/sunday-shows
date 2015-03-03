@@ -91,6 +91,7 @@ class GoogleDoc(object):
                 r = requests.get(url, headers=headers)
 
             if r.status_code != 200:
+                print(r)
                 raise KeyError("Error! Your Google Doc does not exist.")
 
             with open('%s/src/%s.%s' % (os.path.dirname(__file__), self.file_name, self.file_format), 'wb') as writefile:

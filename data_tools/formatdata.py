@@ -2,6 +2,7 @@ import xlrd
 import json
 import os
 import datetime
+from slack_tools import slack_notify
 
 source_file = os.path.join(os.path.dirname(__file__), 'src/data.json')
 filters_json = os.path.join(os.path.dirname(__file__), 'src/filters.json')
@@ -27,8 +28,11 @@ def create_appearance_dict(appearance):
     new_appearance_dict = {
         "date": appearance["DATE"]
     }
-
-    is_last_week = check_last_week(appearance)
+    try:
+        is_last_week = check_last_week(appearance)
+    except:
+        slack_notify("FYI some dates may have errors...", "@mitchthorson")
+        is_last_week = False
 
     if is_last_week == True:
         new_appearance_dict['last_week'] = True
