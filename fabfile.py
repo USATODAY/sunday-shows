@@ -2,6 +2,7 @@ from data_tools.updatedata import get_data
 from data_tools.formatdata import format_data
 from data_tools.slack_tools import slack_notify
 from fabric.operations import local as run
+from data_tools.ftpup import connect_ftp, upload_file
 import os
 
 
@@ -56,4 +57,10 @@ def updater(target="dev"):
     run("csvjson %s > %s" % (copy_csv, copy_json))
     print("Formatting data...")
     format_data()
+    print("Uploading data...")
+    ftp_conn = connect_ftp()
+    ftp_conn.cwd("usatoday/2015/03/sunday-shows/data/")
+
+    upload_file(ftp_conn, create_absolute_path('data_tools/output/data.json'))
+
     slack_notify("Talk show data updated successfully", "@mitchthorson")
