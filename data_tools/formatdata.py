@@ -156,8 +156,6 @@ def format_data():
                     "last_week": False,
                     "last_week_appearances": [],
                     "total_appearances": 0,
-                    "image_name": appearance["image_name"],
-                    "image_credit": appearance["image_credit"]
                 }
 
                 # fix gender to full words
