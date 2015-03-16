@@ -35,7 +35,6 @@ define([
       this.listenTo(Backbone, 'route:share', this.onRouteShare);
       this.listenTo(Backbone, 'data:ready', this.onDataReady);
       this.listenTo(Backbone, 'app:reset', this.onAppReset);
-      this.render();
       
     },
     
@@ -43,7 +42,7 @@ define([
     template: templates["app-view.html"], 
 
     render: function() {
-      this.$el.html(this.template({}));
+      this.$el.html(this.template({head: dataManager.data.copy.header, chatter: dataManager.data.copy.chatter}));
       
     },
 
@@ -60,6 +59,7 @@ define([
     },
 
     onDataReady: function() {
+      this.render();
       this.addSubViews();
     },
 

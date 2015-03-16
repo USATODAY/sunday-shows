@@ -65,7 +65,8 @@
   float: left;
   height: auto;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   max-width: 100%;
   overflow: hidden;
   position: relative;
@@ -101,20 +102,34 @@
 }
 
 .close-card {
-  background-image: url('http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/close-icon.svg');
+  // background-image: url('http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/close-icon.svg');
+  background: $blue;
+  @include BoxShadowHelper(2);
+  border-radius: 50%;
   cursor: pointer;
-  height: 40px;
+  height: 50px;
+  padding: 1em;
   position: absolute;
   text-align: right;
-  top: 0.5em;
-  right: 0.5em;
-  width: 40px;
+  top: 0em;
+  transform: translate(50%, 0%);
+  transition: all 250ms ease;
+  right: 0em;
+  width: 50px;
   span {
     clear: none;
     position: absolute;
     top: 0;
     right: 0;
   }
+  &:hover {
+    @include BoxShadowHelper(3);
+  }
+}
+
+.iapp-close-card-inner{
+    display: block;
+    width: 100%;
 }
 
 #social {
@@ -219,12 +234,13 @@
 }
 
 .iapp-card-front-image-wrap {
+  height: 50px;
   position: relative;
 }
 
 .iapp-card-info {
-  padding: 1em;
-  text-align: left;
+  padding: 1em 1em 0 1em;
+  text-align: center;
 }
 
 .iapp-card-info-header {
@@ -234,7 +250,7 @@
 }
 
 .iapp-card-info-text {
-  margin: 1em 0;
+  margin: 0.5em 0 1em 0;
 }
 
 .iapp-card-status {
@@ -306,13 +322,34 @@
 
 .iapp-card-front-number{
     background-color: $blue;
-    bottom: 5px;
+    // bottom: 5px;
     border-radius: 50%;
     color: white;
-    height: 30px;
-    left: 5px;
-    padding: 0.25em;
+    height: 60px;
+    left: 50%;
+    padding: 0.5em;
     position: absolute;
-    width: 30px;
-    @include BoxShadowHelper(2);
+    transform: translate(-50%, 0);
+    width: 60px;
+    @include BoxShadowHelper(1);
+
+    p {
+        bottom: 0;
+        color: $blue;
+        display: block;
+        font-size: 1rem;
+        margin: 0;
+        position: absolute;
+    }
+}
+
+.iapp-card-front-number-inner {
+    // color: $blue;
+    font-family: "Futura Today DemiBold", Arial, sans-serif;
+    font-size: 2em;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translate( -50%, -50%);
+    top: 50%;
 }

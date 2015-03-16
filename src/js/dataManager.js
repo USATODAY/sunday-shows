@@ -29,19 +29,9 @@ define(
                 
 
                 
-                var temp_i = 0;
                 _.each(_this.data.people, function(dataObj) {
                     
 
-                   console.warn('temp dummy data');
-                   if (dataObj.image_name !== '') {
-                       dataObj.photo_url = _this.base_url + dataObj.image_name;
-                   } else {
-                       dataObj.photo_url = _this.base_url + 'person.jpg';
-                   }
-                   dataObj.photo_credit = '';
-                    temp_i ++;
-                    // dataObj.photo_url = _this.base_url + dataObj.photo_filename + '.jpg';
                 });
 
                 console.log(_this.data);
@@ -55,7 +45,7 @@ define(
             var tags = [];
             _this.data.filters = _.map(_this.data.filters, function(filter){
                 tagObj =  {
-                    tagName: filter.toLowerCase(),
+                    tagName: _this.cleanTag(filter),
                     tagPretty: filter,
                     isNetwork: false
                 };
@@ -64,6 +54,9 @@ define(
                 }
                 return tagObj;
             });
+        },
+        cleanTag: function(tagName) {
+            return tagName.replace(/\n+/g, "-").toLowerCase();
         },
         userName: '',
         base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/'
