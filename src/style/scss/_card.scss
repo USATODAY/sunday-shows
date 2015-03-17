@@ -323,17 +323,14 @@
 }
 
 .iapp-card-front-number{
-    background-color: $blue;
     // bottom: 5px;
-    border-radius: 50%;
-    color: white;
+    color: $blue;
     height: 60px;
     left: 50%;
     padding: 0.5em;
     position: absolute;
     transform: translate(-50%, 0);
-    width: 60px;
-    @include BoxShadowHelper(1);
+    width: 70px;
 
     p {
         bottom: 0;

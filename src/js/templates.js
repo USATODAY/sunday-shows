@@ -54,7 +54,7 @@ __p += '<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
 ((__t = (description)) == null ? '' : __t) +
 '</p>\n    \n</div>\n<div class="iapp-card-front-image-wrap">\n    <div class="iapp-card-front-number">\n       <div class="iapp-card-front-number-inner ">\n           ' +
 ((__t = (filteredAppearancesTotal)) == null ? '' : __t) +
-'\n       </div>\n   </div>\n</div>\n';
+'\n       </div>\n       <img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-empty.svg" alt="" />\n   </div>\n</div>\n';
  if (filteredAppearancesTotal !== 1) {;
 __p += '\n<p>appearances</p>\n';
  } else {;
@@ -71,11 +71,13 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class=\'iapp-last-week-entry\'>\n    <h2 class=\'iapp-last-week-header\'>' +
-((__t = (networkGuests[0].last_week_network)) == null ? '' : __t) +
-'</h2>\n    ';
+__p += '<div class=\'iapp-last-week-entry\'>\n    <h2 class=\'iapp-last-week-header\'><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/';
+ print(networkGuests[0].last_week_network.toLowerCase());
+__p += '.png" alt="' +
+((__t = (networkGuests[0].last_week_network )) == null ? '' : __t) +
+'" class="iapp-last-week-network-logo" /></h2>\n    ';
  _.each(networkGuests, function(guestObj) { ;
-__p += '\n        <div class="card small-card">\n            \n            <div class="iapp-card-front-image-wrap">\n            </div>\n            <div class="iapp-card-info">\n                <h2 class="iapp-card-info-header">' +
+__p += '\n        <div class="card small-card">\n            \n            <div class="iapp-card-info">\n                <h2 class="iapp-card-info-header">' +
 ((__t = ( guestObj.guest)) == null ? '' : __t) +
 '</h2>\n                <p class="iapp-card-info-text">' +
 ((__t = (guestObj.description)) == null ? '' : __t) +
