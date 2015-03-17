@@ -18,7 +18,6 @@
   p {
       font-family: "Futura Today Light", Arial, sans-serif;
     }
-  position: static;
   margin-top: 50px;
   max-width: 400px;
   transition: all 0.5s ease;
@@ -28,6 +27,13 @@
   position: relative;
   @media (max-width: 600px) {
     width: 80%;
+  }
+  @media (min-width: 600px) {
+    left: 50%;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
