@@ -27,7 +27,8 @@ define([
   return Backbone.View.extend({
     el: ".iapp-page-wrap",
     events: {
-      'click .iapp-begin-button': 'onBeginClick' 
+      'click .iapp-begin-button': 'onBeginClick',
+      'change .iapp-last-week-checkbox': 'onCheckBoxChange'
     },
 
     initialize: function() {
@@ -35,7 +36,6 @@ define([
       this.listenTo(Backbone, 'route:share', this.onRouteShare);
       this.listenTo(Backbone, 'data:ready', this.onDataReady);
       this.listenTo(Backbone, 'app:reset', this.onAppReset);
-      this.render();
       
     },
     
@@ -43,7 +43,7 @@ define([
     template: templates["app-view.html"], 
 
     render: function() {
-      this.$el.html(this.template({}));
+      this.$el.html(this.template({head: dataManager.data.copy.header, chatter: dataManager.data.copy.chatter}));
       
     },
 
@@ -60,7 +60,18 @@ define([
     },
 
     onDataReady: function() {
+      this.render();
       this.addSubViews();
+    },
+
+    onCheckBoxChange: function() {
+       var blnIsChecked = this.$('.iapp-last-week-checkbox').prop("checked");
+       if (blnIsChecked) {
+        router.navigate('last-week/', {trigger: true});
+       } else {
+           Backbone.trigger('app:reset');
+           router.navigate('_');
+       }
     },
 
     onMenuClick: function() {
@@ -73,6 +84,7 @@ define([
 
     onAppReset: function() {
       this.$el.removeClass('iapp-last-week-route');
+      this.$('.iapp-last-week-checkbox').prop('checked', false);
     },
 
     onBeginClick: function() {
@@ -85,6 +97,7 @@ define([
         Analytics.trackEvent('Last week guests page viewed');
         this.$el.addClass('iapp-last-week-route');
         this.menuView.model.set({'isMenuOpen': false});
+        this.$('.iapp-last-week-checkbox').prop('checked', true);
     }
     
   });

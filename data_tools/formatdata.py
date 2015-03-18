@@ -25,8 +25,15 @@ def check_last_week(appearance):
 
 # create appearance entry function
 def create_appearance_dict(appearance):
+    dateStr = appearance["DATE"]
+    try:
+        year, month, day = dateStr.split("-")
+    except:
+        print "Error parsing dates for %s. Check formatting." % appearance["Guest"]
+        raise
+
     new_appearance_dict = {
-        "date": appearance["DATE"]
+        "date": "%s/%s/%s" % (month, day, year)
     }
     try:
         is_last_week = check_last_week(appearance)
@@ -101,7 +108,8 @@ def format_data():
     # flatten filter list
     flat_filter_list = []
     for filter_item in filter_list:
-        flat_filter_list.append(filter_item["filters"])
+        if not filter_item["filters"] == "":
+            flat_filter_list.append(filter_item["filters"])
 
     copy_file = open(copy_json)
     copy_list = json.load(copy_file)
@@ -156,8 +164,6 @@ def format_data():
                     "last_week": False,
                     "last_week_appearances": [],
                     "total_appearances": 0,
-                    "image_name": appearance["image_name"],
-                    "image_credit": appearance["image_credit"]
                 }
 
                 # fix gender to full words

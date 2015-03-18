@@ -13,6 +13,7 @@ define(
            this.listenTo(Backbone, 'tags:filter-ready', this.throttledFilter);
            this.listenTo(Backbone, 'video:set', this.advanceSub);
            this.listenTo(Backbone, 'tags:reset', this.onTagsReset);
+           this.listenTo(Backbone, 'app:reset', this.onReset);
            this.listenTo(this.collection, 'change:isActive', this.onFilter);
            
            this.render();
@@ -65,7 +66,14 @@ define(
         
        
         onTagsReset: function() {
-            this.$('.iapp-tag-container').isotope('layout');
+            this.$el.isotope('layout');
+        },
+
+        onReset: function() {
+            var _this = this;
+            _.delay(function() {
+                _this.$el.isotope('layout');
+            }, 500);
         },
 
         onFilter: function() {

@@ -78,8 +78,8 @@
 
 .iapp-card-wrap {
   float: right;
-  margin-left: 1em;
-  width: calc(74.5% - 1em);
+  margin: 0 1em;
+  width: calc(74.5% - 2em);
 }
 
 
@@ -100,7 +100,7 @@
 
 .iapp-card-wrap-full-width {
   float: none;
-  width: 100%;
+  width: calc(100% - 2em);
 }
 
 
@@ -124,4 +124,12 @@
   font-family: "Futura Today DemiBold", Arial, sans-serif;
   font-size: 1.5em;
   margin: 1em 0;
+}
+
+.switch {
+  margin: 0 auto;
+  display: block;
+  width: 300px;
+  text-align: center;
+  text-transform: uppercase;
 }

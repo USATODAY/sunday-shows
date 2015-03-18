@@ -1,14 +1,18 @@
+<div class="iapp-card-info">
+    <h2 class="iapp-card-info-header"><%= guest%></h2>
+    <p class="iapp-card-info-text"><%=description%></p>
+    
+</div>
 <div class="iapp-card-front-image-wrap">
-    <img class="cover-img" src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/load.png" data-src='<%=photo_url%>'alt="<%=guest%>">
     <div class="iapp-card-front-number">
        <div class="iapp-card-front-number-inner ">
            <%=filteredAppearancesTotal%>
        </div>
-    </div>
+       <img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-empty.svg" alt="" />
+   </div>
 </div>
-<div class="iapp-card-info">
-    <h2 class="iapp-card-info-header"><%= guest%></h2>
-    <p class="iapp-card-info-text"><%=description%></p>
-    <p class="iapp-card-info-photo-credit"><%= photo_credit%></p>
-    
-</div>
+<% if (filteredAppearancesTotal !== 1) {%>
+<p>appearances</p>
+<% } else {%>
+<p>appearance</p>
+<% } %>

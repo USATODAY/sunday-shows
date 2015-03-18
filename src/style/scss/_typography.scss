@@ -21,6 +21,10 @@ article .iapp-page-header {
   }
 }
 
+p {
+  margin: 0;
+}
+
 .iapp-page-chatter {
   font: normal 1.2em/1.5 'arial','helvetica',sans-serif;
   color: #666;
@@ -90,4 +94,5 @@ article .iapp-page-header {
 .iapp-summary {
   font-family: "Futura Today Normal", Arial, sans-serif;
   font-weight: 400;
+  margin-bottom: 1em;
 }

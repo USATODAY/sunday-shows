@@ -1,6 +1,6 @@
 .iapp-last-week-wrap {
     display: none;
-    padding: 0 1em;
+    padding: 0 1em 8em 1em;
     width: 100%;
     @extend .group;
 }
@@ -27,10 +27,16 @@
   }
 
   .iapp-reset-button {
-    display: block;
-  }
-
-  .iapp-menu-close, .iapp-top-button {
     display: none;
   }
+
+  .iapp-menu-button, .iapp-menu-close, .iapp-top-button {
+    display: none;
+  }
+}
+
+.iapp-last-week-network-logo {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
 }

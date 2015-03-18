@@ -30,8 +30,15 @@
   color: $blue;
   height: 80px;
   text-transform: uppercase;
-  transition: transform 500ms ease;
+  transition: all 250ms ease;
   width: 80px;
   z-index: 99;
+  &:hover {
+    @include BoxShadowHelper(5)
+  }
+}
 
+.iapp-button-blue {
+    background: $blue;
+    color: white;
 }
