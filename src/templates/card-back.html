@@ -19,7 +19,7 @@
                 
             <% _.each(appearances, function(appearance) { %>
                 <tr class="iapp-card-back-detail-appearance">
-                    <td class="iapp-card-back-detail-appearance-date"><%=appearance.date%></td><td class="iapp-card-back-detail-appearance-network"><%=showNames[appearance.network]%></td><td class="iapp-card-back-detail-description"><%=appearance.description%></td>
+                    <td class="iapp-card-back-detail-appearance-date"><%=appearance.date%></td><td class="iapp-card-back-detail-appearance-network"><%=showNames[appearance.network]%></td><td><%=appearance.network%></td><td class="iapp-card-back-detail-description"><%=appearance.description%></td>
                 </tr>
             
             <%})%>

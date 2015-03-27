@@ -39,6 +39,8 @@ __p += '\n                <tr class="iapp-card-back-detail-appearance">\n       
 ((__t = (appearance.date)) == null ? '' : __t) +
 '</td><td class="iapp-card-back-detail-appearance-network">' +
 ((__t = (showNames[appearance.network])) == null ? '' : __t) +
+'</td><td>' +
+((__t = (appearance.network)) == null ? '' : __t) +
 '</td><td class="iapp-card-back-detail-description">' +
 ((__t = (appearance.description)) == null ? '' : __t) +
 '</td>\n                </tr>\n            \n            ';
