@@ -28,7 +28,7 @@ define([
     el: ".iapp-page-wrap",
     events: {
       'click .iapp-begin-button': 'onBeginClick',
-      'change .iapp-last-week-checkbox': 'onCheckBoxChange'
+      'change .iapp-last-week-radio': 'onCheckBoxChange'
     },
 
     initialize: function() {
@@ -65,7 +65,7 @@ define([
     },
 
     onCheckBoxChange: function() {
-       var blnIsChecked = this.$('.iapp-last-week-checkbox').prop("checked");
+       var blnIsChecked = this.$('.iapp-last-week-radio').eq(1).prop("checked");
        if (blnIsChecked) {
         router.navigate('last-week/', {trigger: true});
        } else {
@@ -84,7 +84,8 @@ define([
 
     onAppReset: function() {
       this.$el.removeClass('iapp-last-week-route');
-      this.$('.iapp-last-week-checkbox').prop('checked', false);
+      this.$('.iapp-last-week-radio').eq(1).prop('checked', false);
+      this.$('.iapp-last-week-radio').eq(0).prop('checked', true);
     },
 
     onBeginClick: function() {
@@ -97,7 +98,8 @@ define([
         Analytics.trackEvent('Last week guests page viewed');
         this.$el.addClass('iapp-last-week-route');
         this.menuView.model.set({'isMenuOpen': false});
-        this.$('.iapp-last-week-checkbox').prop('checked', true);
+        this.$('.iapp-last-week-radio').eq(1).prop('checked', true);
+        this.$('.iapp-last-week-radio').eq(0).prop('checked', false);
     }
     
   });
