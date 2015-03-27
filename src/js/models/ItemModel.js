@@ -1,39 +1,55 @@
 define([
     "jquery",
     "underscore",
-    "backbone"
-], function($, _, Backbone) {
+    "backbone",
+    "dataManager"
+], function($, _, Backbone, dataManager) {
     return Backbone.Model.extend({
         defaults: {
             highlight: false,
             isLiked: false,
             isDisliked: false,
-            tags: []
+            tags: [],
+            showNames: {}
         },
         initialize: function() {
             this.set({'filteredAppearancesTotal': this.get('total_appearances')});
             this.set({'filteredAppearances': this.get('appearances')});
+            this.set({'showNames': dataManager.data.shows});
             this.listenTo(Backbone, 'filters:update', this.onFiltersUpdate);
         },
-        onFiltersUpdate: function(filterArray, networkArray) {
-            this.filterAppearancesByNetwork(networkArray);
+        onFiltersUpdate: function(filterArray, networkArray, categoryArray) {
+            var _this = this;
+            // _.defer(function() {
+                // _this.filterAppearancesByNetwork(networkArray, categoryArray);
+            // });
+            this.filterAppearancesByNetwork(networkArray, categoryArray);
         },
 
-        filterAppearancesByNetwork: function(networkArray) {
+        filterAppearancesByNetwork: function(networkArray, categoryArray) {
             var totalAppearances = this.get('appearances');
+            console.log(networkArray);
+            console.log(categoryArray);
+            var filteredAppearances = totalAppearances;
             if (networkArray.length > 0) {
-                var filteredAppearances = _.filter(totalAppearances, function(appearance) {
+                filteredAppearances = _.filter(filteredAppearances, function(appearance) {
                     if (appearance.network !== undefined) {
                         return _.contains(networkArray, appearance.network.toLowerCase());
                     } else {
                         return false;
                     }
                 });
-                this.set({'filteredApperances': filteredAppearances});
-                this.set({'filteredAppearancesTotal': filteredAppearances.length});
-            } else {
-                this.set({'filteredAppearances': totalAppearances, 'filteredAppearancesTotal': this.get('total_appearances')});
+                            }
+            if (categoryArray.length > 0) {
+                filteredAppearances = _.filter(filteredAppearances, function(appearance) {
+                    return _.contains(categoryArray, appearance.category.toLowerCase());
+                });
             }
+            
+            this.set({'filteredApperances': filteredAppearances});
+            this.set({'filteredAppearancesTotal': filteredAppearances.length});
+
+
         }
 
     });

@@ -19,6 +19,11 @@ define(
 
     }
 
+    //will check against networks and categories later 
+    //we have to track them seperately
+    var networkFilters = ['abc', 'cnn', 'nbc', 'fox', 'cbs'];
+    var categoryFilters = ['house', 'senate', 'admin', 'other_political', 'journalist', 'other'];
+
     return {
         data: {},
         getData: function() {
@@ -47,11 +52,19 @@ define(
                 tagObj =  {
                     tagName: _this.cleanTag(filter),
                     tagPretty: filter,
-                    isNetwork: false
+                    isNetwork: false,
+                    isCategory: false
                 };
-                if (tagObj.tagName == 'abc' || tagObj.tagName == 'cnn' || tagObj.tagName == 'nbc' || tagObj.tagName == 'fox' || tagObj.tagName == 'univision' || tagObj.tagName == 'cbs') {
+                //check to see if the tag is a network
+                if (_.contains(networkFilters, tagObj.tagName)) {
                     tagObj.isNetwork = true;
                 }
+
+                //check to see if it is a category
+                if (_.contains(categoryFilters, tagObj.tagName)) {
+                    tagObj.isCategory = true;
+                }
+
                 return tagObj;
             });
         },

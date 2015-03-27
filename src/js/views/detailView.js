@@ -10,7 +10,7 @@ define([
     function(jQuery, _, Backbone, Analytics, templates, config, router) {
       return Backbone.View.extend({
         tagName: "div",
-        className: "modal",
+        className: "iapp-modal",
         template: templates["card-back.html"],
 
         events: {
@@ -41,7 +41,7 @@ define([
           }
 
           
-          this.$el.html(this.template(this.model.attributes));   
+          this.$el.html(this.template(this.model.toJSON()));   
           this.postRender(this.$el);
           return this;
         },

@@ -15,12 +15,16 @@
         <div class="iapp-detail-info">
             <h2 class="card-back-header"><%= guest %> </h2>
             <p class="iapp-summary"><%=description%></p>
+            <table class="table">
+                
             <% _.each(appearances, function(appearance) { %>
-                <div class="iapp-card-back-detail-appearance">
-                    <span class="iapp-card-back-detail-appearance-date"><%=appearance.date%></span><span class="iapp-card-back-detail-appearance-network"><%=appearance.network%></span>
-                </div>
+                <tr class="iapp-card-back-detail-appearance">
+                    <td class="iapp-card-back-detail-appearance-date"><%=appearance.date%></td><td class="iapp-card-back-detail-appearance-network"><%=showNames[appearance.network]%></td><td class="iapp-card-back-detail-description"><%=appearance.description%></td>
+                </tr>
             
             <%})%>
+
+            </table>
         </div>
       
       

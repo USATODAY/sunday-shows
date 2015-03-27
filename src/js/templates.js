@@ -7,11 +7,15 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class="iapp-project-info-wrap">\n    <h1 class="iapp-page-header">' +
-((__t = ( head )) == null ? '' : __t) +
+((__t = ( header )) == null ? '' : __t) +
 '</h1>\n    <p class="iapp-page-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
-'</p>\n\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n          All guests\n          <input type="checkbox" class=\'iapp-last-week-checkbox\'>\n          <span class="lever"></span>\n          Last week\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
-((__t = ( head )) == null ? '' : __t) +
+' <a href=\'mailto:' +
+((__t = (contact_email)) == null ? '' : __t) +
+'\'>' +
+((__t = (contact_email)) == null ? '' : __t) +
+'</a></p>\n\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n          All guests\n          <input type="checkbox" class=\'iapp-last-week-checkbox\'>\n          <span class="lever"></span>\n          Last week\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
+((__t = ( header )) == null ? '' : __t) +
 '</h2>\n            <p class="iapp-intro-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
 '</p>\n            <div class="iapp-button iapp-begin-button iapp-clickable"><div class="iapp-button-text">Begin</div></div>\n        </div> <!-- end iapp-intro-info -->\n    </div> <!-- end iapp-intro-content-wrap -->\n</div> <!-- end iapp-intro-wrap -->\n\n<div class="iapp-end-modal-wrap"></div>\n\n';
@@ -29,15 +33,17 @@ __p += '\n      <div class="card card-detail">\n      \n        <div class="iapp
 ((__t = ( guest )) == null ? '' : __t) +
 ' </h2>\n            <p class="iapp-summary">' +
 ((__t = (description)) == null ? '' : __t) +
-'</p>\n            ';
+'</p>\n            <table class="table">\n                \n            ';
  _.each(appearances, function(appearance) { ;
-__p += '\n                <div class="iapp-card-back-detail-appearance">\n                    <span class="iapp-card-back-detail-appearance-date">' +
+__p += '\n                <tr class="iapp-card-back-detail-appearance">\n                    <td class="iapp-card-back-detail-appearance-date">' +
 ((__t = (appearance.date)) == null ? '' : __t) +
-'</span><span class="iapp-card-back-detail-appearance-network">' +
-((__t = (appearance.network)) == null ? '' : __t) +
-'</span>\n                </div>\n            \n            ';
+'</td><td class="iapp-card-back-detail-appearance-network">' +
+((__t = (showNames[appearance.network])) == null ? '' : __t) +
+'</td><td class="iapp-card-back-detail-description">' +
+((__t = (appearance.description)) == null ? '' : __t) +
+'</td>\n                </tr>\n            \n            ';
 });
-__p += '\n        </div>\n      \n      \n      </div>\n      \n        <div class="iapp-detail-bg"></div> \n\n';
+__p += '\n\n            </table>\n        </div>\n      \n      \n      </div>\n      \n        <div class="iapp-detail-bg"></div> \n\n';
 
 }
 return __p
@@ -75,7 +81,9 @@ __p += '<div class=\'iapp-last-week-entry\'>\n    <h2 class=\'iapp-last-week-hea
  print(networkGuests[0].last_week_network.toLowerCase());
 __p += '.png" alt="' +
 ((__t = (networkGuests[0].last_week_network )) == null ? '' : __t) +
-'" class="iapp-last-week-network-logo" /></h2>\n    ';
+'" class="iapp-last-week-network-logo" /></h2>\n    <h2 class="iapp-last-week-header">' +
+((__t = (networkGuests[0].showNames[networkGuests[0].last_week_network])) == null ? '' : __t) +
+'</h2>\n    ';
  _.each(networkGuests, function(guestObj) { ;
 __p += '\n        <div class="card small-card">\n            \n            <div class="iapp-card-info">\n                <h2 class="iapp-card-info-header">' +
 ((__t = ( guestObj.guest)) == null ? '' : __t) +
@@ -93,7 +101,7 @@ this["templates"]["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="iapp-menu-panel">\n    \n    \n    <h3 class="iapp-menu-header iapp-menu-header-filters">Filters</h3>\n    <div class="iapp-filters-wrap"></div> \n</div>\n\n<div class="iapp-menu-control-area">\n    <div class="iapp-menu-button iapp-button iapp-button-blue iapp-clickable"><div class="iapp-button-text">Filters</div></div>\n    <div class="iapp-top-button iapp-button iapp-button-blue iapp-clickable"><div class="iapp-button-text">Top</div></div>\n    <div class="iapp-menu-close iapp-button iapp-clickable"><div class="iapp-button-text">Close Menu</div></div>\n    <div class="iapp-reset-button iapp-button iapp-clickable"><div class="iapp-button-text">Reset</div></div>\n    <div class="iapp-menu-scoreboard">\n\n        <div class="iapp-menu-scoreboard-likes">\n            <span class="iapp-menu-scoreboard-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" alt="like"></span>\n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
+__p += '<div class="iapp-menu-panel">\n    \n    \n    <h3 class="iapp-menu-header iapp-menu-header-filters">Filters</h3>\n    <div class="iapp-filters-wrap"></div> \n</div>\n\n<div class="iapp-menu-control-area">\n    <div class="iapp-menu-button iapp-button iapp-button-blue iapp-clickable"><div class="iapp-button-text">Filters</div></div>\n    <!-- <div class="iapp&#45;top&#45;button iapp&#45;button iapp&#45;button&#45;blue iapp&#45;clickable"><div class="iapp&#45;button&#45;text">Top</div></div> -->\n    <div class="iapp-menu-close iapp-button iapp-clickable"><div class="iapp-button-text">Close Menu</div></div>\n    <div class="iapp-reset-button iapp-button iapp-clickable"><div class="iapp-button-text">Reset</div></div>\n    <div class="iapp-menu-scoreboard">\n\n        <div class="iapp-menu-scoreboard-likes">\n            <span class="iapp-menu-scoreboard-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" alt="like"></span>\n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
 ((__t = (numlikes)) == null ? '' : __t) +
 '</span><span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n            </div>\n        </div>\n        <div class="iapp-menu-scoreboard-dislikes">\n            \n            <span class="iapp-menu-scoreboard-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" alt="like"></span> \n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
 ((__t = (numdislikes)) == null ? '' : __t) +

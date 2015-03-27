@@ -256,8 +256,9 @@ module.exports = function(grunt) {
             filter: 'isFile'
           }, {
             expand: true,
-            cwd: 'bower_components/requirejs/',
-            src: ['require.js'],
+            cwd: 'bower_components/',
+            flatten: true,
+            src: ['requirejs/require.js', 'bootstrap/dist/css/bootstrap.min.css'],
             dest: '<%=config.build%>',
             filter: 'isFile'
           }

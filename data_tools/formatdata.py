@@ -7,6 +7,7 @@ from slack_tools import slack_notify
 source_file = os.path.join(os.path.dirname(__file__), 'src/data.json')
 filters_json = os.path.join(os.path.dirname(__file__), 'src/filters.json')
 copy_json = os.path.join(os.path.dirname(__file__), 'src/copy.json')
+shows_json = os.path.join(os.path.dirname(__file__), 'src/shows.json')
 output_file = os.path.join(os.path.dirname(__file__), 'output/data.json') 
 
 
@@ -33,8 +34,12 @@ def create_appearance_dict(appearance):
         raise
 
     new_appearance_dict = {
-        "date": "%s/%s/%s" % (month, day, year)
+        "date": "%s/%s/%s" % (month, day, year),
+        "party": appearance["Party"],
+        "state": appearance["State"],
+        "description": appearance["Description"]
     }
+
     try:
         is_last_week = check_last_week(appearance)
     except:
@@ -59,6 +64,20 @@ def create_appearance_dict(appearance):
         new_appearance_dict["network"] = "CNN"
     elif appearance["Univision"].lower().strip() == "x":
         new_appearance_dict["network"] = "Univision"
+
+    # check for other tags
+    if appearance["House"].lower().strip() == "x":
+        new_appearance_dict["category"] = "house"
+    elif appearance["Senate"].lower().strip() == "x":
+        new_appearance_dict["category"] = "senate"
+    elif appearance["Other Political"].lower().strip() == "x":
+        new_appearance_dict["category"] = "other_political"
+    elif appearance["Admin."].lower().strip() == "x":
+        new_appearance_dict["category"] = "admin"
+    elif appearance["Journalist"].lower().strip() == "x":
+        new_appearance_dict["category"] = "journalist"
+    else:
+        new_appearance_dict["category"] = "other"
     
     return new_appearance_dict
 
@@ -88,6 +107,22 @@ def create_tag_list(person_dict):
 
     return new_tag_list
 
+def check_categories(appearance, person_dict):
+    # check for boolean values on appearance
+    if appearance["House"].lower() == "x":
+        person_dict["house"] = True
+    if appearance["Senate"].lower() == "x":
+        person_dict["senate"] = True
+    if appearance["Admin."].lower() == "x":
+        person_dict["admin"] = True
+    if appearance["Other Political"].lower() == "x":
+        person_dict["other_political"] = True
+    if appearance["Journalist"].lower() == "x":
+        person_dict["journalist"] = True
+    if appearance["Other"].lower() == "x":
+        person_dict["other"] = True
+
+
 
 def format_data():
     # Open the workbook
@@ -115,6 +150,14 @@ def format_data():
     copy_list = json.load(copy_file)
     copy_file.close()
 
+    shows_file = open(shows_json)
+    shows_list = json.load(shows_file)
+    shows_file.close()
+    shows_dict = {}
+
+    for show in shows_list:
+        shows_dict[show["network"]] = show["show_name"]
+    
     # Add all appearances as dictionaries to the list
     #for rownum in range(1, sh.nrows):
     #  appearance = {}
@@ -164,6 +207,12 @@ def format_data():
                     "last_week": False,
                     "last_week_appearances": [],
                     "total_appearances": 0,
+                    "house": False,
+                    "senate": False,
+                    "admin": False,
+                    "journalist": False,
+                    "other_political": False,
+                    "other": False
                 }
 
                 # fix gender to full words
@@ -171,32 +220,8 @@ def format_data():
                     new_person_dict["gender"] = "female"
                 elif new_person_dict["gender"].lower().strip() == "m":
                     new_person_dict["gender"] = "male"
-                # check for boolean values on appearance
-                if appearance["House"].lower() == "x":
-                    new_person_dict["house"] = True
-                else:
-                    new_person_dict["house"] = False
-                if appearance["Senate"].lower() == "x":
-                    new_person_dict["senate"] = True
-                else:
-                    new_person_dict["senate"] = False
-                if appearance["Admin."].lower() == "x":
-                    new_person_dict["admin"] = True
-                else:
-                    new_person_dict["admin"] = False
-                if appearance["Other Political"].lower() == "x":
-                    new_person_dict["other_political"] = True
-                else:
-                    new_person_dict["other_political"] = False
 
-                if appearance["Journalist"].lower() == "x":
-                    new_person_dict["journalist"] = True
-                else:
-                    new_person_dict["journalist"] = False
-                if appearance["Other"].lower() == "x":
-                    new_person_dict["other"] = True
-                else:
-                    new_person_dict["other"] = False
+                check_categories(appearance, new_person_dict)
 
                 new_person_dict["appearances"] = []
 
@@ -222,6 +247,12 @@ def format_data():
                 # Increment total appearance number
                 people_dict[guest_name]["total_appearances"] = people_dict[guest_name]["total_appearances"] + 1
 
+                # Check categories o appearance and apply to person
+                check_categories(appearance, people_dict[guest_name])
+
+                # Update the person's description
+                people_dict[guest_name]["description"] = appearance["Description"]
+
                 if new_appearance_dict["last_week"] == True:
                     people_dict[guest_name]["last_week"] = True
                     people_dict[guest_name]["last_week_appearances"].append(new_appearance_dict["network"])
@@ -243,7 +274,8 @@ def format_data():
     data_dict = {
         "people": person_list,
         "filters": flat_filter_list,
-        "copy": copy_list[0]
+        "copy": copy_list[0],
+        "shows": shows_dict
     }
     # save person list to json file
 
