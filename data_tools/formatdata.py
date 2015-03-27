@@ -89,18 +89,10 @@ def create_tag_list(person_dict):
         new_tag_list.append(person_dict["gender"].lower())
     if person_dict["race"] is not "":
         new_tag_list.append(person_dict["race"].lower())
-    if person_dict["house"] == True:
-        new_tag_list.append("house")
-    elif person_dict["senate"] == True:
-        new_tag_list.append("senate")
-    elif person_dict["admin"] == True:
-        new_tag_list.append("admin")
-    elif person_dict["journalist"] == True:
-        new_tag_list.append("journalist")
-    elif person_dict["other_political"] == True:
-        new_tag_list.append("other_political")
-    elif person_dict["other"] == True:
         new_tag_list.append("other")
+    for appearance in person_dict["appearances"]:
+        if "category" in appearance.keys():
+            new_tag_list.append(appearance["category"].lower())
     for appearance in person_dict["appearances"]:
         if "network" in appearance.keys():
             new_tag_list.append(appearance["network"].lower())
@@ -110,17 +102,17 @@ def create_tag_list(person_dict):
 def check_categories(appearance, person_dict):
     # check for boolean values on appearance
     if appearance["House"].lower() == "x":
-        person_dict["house"] = True
+        person_dict["category"] = "house"
     if appearance["Senate"].lower() == "x":
-        person_dict["senate"] = True
+        person_dict["category"] = "senate"
     if appearance["Admin."].lower() == "x":
-        person_dict["admin"] = True
+        person_dict["category"] = "admin"
     if appearance["Other Political"].lower() == "x":
-        person_dict["other_political"] = True
+        person_dict["category"] = "other_political"
     if appearance["Journalist"].lower() == "x":
-        person_dict["journalist"] = True
+        person_dict["category"] = "journalist"
     if appearance["Other"].lower() == "x":
-        person_dict["other"] = True
+        person_dict["category"] = "other"
 
 
 
@@ -207,12 +199,7 @@ def format_data():
                     "last_week": False,
                     "last_week_appearances": [],
                     "total_appearances": 0,
-                    "house": False,
-                    "senate": False,
-                    "admin": False,
-                    "journalist": False,
-                    "other_political": False,
-                    "other": False
+                    "category": None
                 }
 
                 # fix gender to full words
