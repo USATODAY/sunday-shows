@@ -7,11 +7,15 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class="iapp-project-info-wrap">\n    <h1 class="iapp-page-header">' +
-((__t = ( head )) == null ? '' : __t) +
+((__t = ( header )) == null ? '' : __t) +
 '</h1>\n    <p class="iapp-page-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
-'</p>\n\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n          All guests\n          <input type="checkbox" class=\'iapp-last-week-checkbox\'>\n          <span class="lever"></span>\n          Last week\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
-((__t = ( head )) == null ? '' : __t) +
+' <a href=\'mailto:' +
+((__t = (contact_email)) == null ? '' : __t) +
+'\'>' +
+((__t = (contact_email)) == null ? '' : __t) +
+'</a></p>\n\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n          All guests\n          <input type="checkbox" class=\'iapp-last-week-checkbox\'>\n          <span class="lever"></span>\n          Last week\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
+((__t = ( header )) == null ? '' : __t) +
 '</h2>\n            <p class="iapp-intro-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
 '</p>\n            <div class="iapp-button iapp-begin-button iapp-clickable"><div class="iapp-button-text">Begin</div></div>\n        </div> <!-- end iapp-intro-info -->\n    </div> <!-- end iapp-intro-content-wrap -->\n</div> <!-- end iapp-intro-wrap -->\n\n<div class="iapp-end-modal-wrap"></div>\n\n';

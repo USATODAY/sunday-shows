@@ -43,7 +43,7 @@ define([
     template: templates["app-view.html"], 
 
     render: function() {
-      this.$el.html(this.template({head: dataManager.data.copy.header, chatter: dataManager.data.copy.chatter}));
+      this.$el.html(this.template(dataManager.data.copy));
       
     },
 
