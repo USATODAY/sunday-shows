@@ -4,6 +4,7 @@ define([
     'isotope',
     'api/analytics',
     'underscore',
+    'dataManager',
     'lib/BackboneRouter',
     'templates',
     'models/config',
@@ -13,12 +14,14 @@ define([
     'unveil',
     'jquery_ui_touch_punch'
 ], 
-    function(jQuery, imagesLoaded, Isotope, Analytics, _, Backbone, templates, config, cardView, detailView, router) {
+    function(jQuery, imagesLoaded, Isotope, Analytics, _, dataManager, Backbone, templates, config, cardView, detailView, router) {
 
         return Backbone.View.extend({
 
             initialize: function() {
                 this.listenTo(this.collection, 'change:highlight', this.showDetail);
+                console.log("last week");
+                console.log(this.collection);
                 this.render();
             },
             className: 'iapp-last-week-wrap',
@@ -27,6 +30,7 @@ define([
                 this.sortCollection();
                 var _this = this;
                 _.each(this.sortedCollection, function(networkArray) {
+                    console.log(networkArray);
                     _this.$el.append(_this.template({networkGuests: networkArray}));
                 });
                 this.$('img').unveil(200);

@@ -49,7 +49,7 @@ define([
                 }
             });
 
-            //cache a copy of filtered vids
+            //cache a copy of filtered items
             this._availableItems = this.where({'isAvailable': true});
 
         },

@@ -1,4 +1,4 @@
-.modal {
+.iapp-modal {
   height: 100%;
   position: fixed;
   top: 50%;
@@ -62,8 +62,12 @@
   z-index: -1;
 }
 
-.iapp-card-back-detail-appearance-network {
+.iapp-card-back-detail-appearance-network, .iapp-card-back-detail-description {
     margin-left: 2em;
+}
+
+.iapp-card-back-detail-appearance {
+    margin-bottom: .5em;
 }
 
 @media(max-width: 800px) {

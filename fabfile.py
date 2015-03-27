@@ -20,6 +20,9 @@ filter_json = create_absolute_path('data_tools/src/filters.json')
 copy_csv = create_absolute_path('data_tools/src/copy.csv') 
 copy_json = create_absolute_path('data_tools/src/copy.json') 
 
+shows_csv = create_absolute_path('data_tools/src/shows.csv')
+shows_json = create_absolute_path('data_tools/src/shows.json') 
+
 def updater(target="dev"):
     print ("Downloading new data file from Google...")
     try:
@@ -58,9 +61,11 @@ def updater(target="dev"):
         run ("in2csv %s --sheet Sheet1 > %s" % (master_spreadsheet, data_csv))
         run ("in2csv %s --sheet filters > %s" % (master_spreadsheet, filter_csv))
         run ("in2csv %s --sheet copy > %s" % (master_spreadsheet, copy_csv))
+        run ("in2csv %s --sheet shows > %s" % (master_spreadsheet, shows_csv))
         run("csvjson %s > %s" % (data_csv, data_json))
         run("csvjson %s > %s" % (filter_csv, filter_json))
         run("csvjson %s > %s" % (copy_csv, copy_json))
+        run("csvjson %s > %s" % (shows_csv, shows_json))
     except:
         slack_notify("Hello, I was unable to convert the latest sunday talk show data correctly.", slack_channel)
         raise
