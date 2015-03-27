@@ -1,9 +1,11 @@
 $switch-bg-color: white;
 $switch-unchecked-bg: white;
 $switch-checked-lever-bg: $blue;
-$switch-unchecked-lever-bg: $medium-grey;
+$switch-unchecked-lever-bg: darken($light-grey, 10);
 $input-disabled-solid-color: $dark-grey;
-$label-text-color: $medium-grey;
+$label-text-color: white;
+
+$switch-radius: 5px;
 
 /***************
      Switch
@@ -15,19 +17,54 @@ $label-text-color: $medium-grey;
     -khtml-user-select: none;
     -ms-user-select: none;
 }
-.switch label {
-    color: $label-text-color;
-    cursor: pointer;
+
+.switch {
+    @extend .group;
+    background-color: $switch-unchecked-lever-bg;
+    box-shadow: inset 0 1px 3px rgba(black, .3),
+                      0 1px rgba(white, .1);
+    border-radius: $switch-radius;
 }
-.switch label input[type=checkbox]{
+
+.switch label {
+    display: block;
+    margin: 0;
+    float: left;
+    width: 50%;
+}
+
+.switch label .iapp-toggle-name {
+    background-color: none;
+    color: $medium-grey;
+    cursor: pointer;
+    padding: 0.5em 0.25em;
+    transition: all 250ms ease;
+}
+
+.switch label {
+    &:nth-child(0n+1) {
+        .iapp-toggle-name {
+            border-radius: $switch-radius 0px 0px $switch-radius;
+        }
+    }
+    &:nth-child(0n+2) {
+        .iapp-toggle-name {
+            border-radius: 0px $switch-radius $switch-radius 0px;
+        } 
+    }
+}
+.switch label input[type=radio]{
     opacity: 0;
     width: 0;
     height: 0;
+    display: none;
 }
-.switch label input[type=checkbox]:checked + .lever {
+.switch label input[type=radio]:checked + .iapp-toggle-name{
     background-color: $switch-checked-lever-bg;
+    color: white;
+    @include BoxShadowHelper(1);
 }
-.switch label input[type=checkbox]:checked + .lever:after {
+.switch label input[type=radio]:checked + .lever:after {
     background-color: $switch-bg-color;
 }
 .switch label .lever {
