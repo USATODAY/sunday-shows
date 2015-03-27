@@ -4,6 +4,10 @@ article * {
     box-sizing:        border-box;   /* Everything else */
 }
 
+header * {
+    box-sizing: content-box;
+}
+
 div.non-article-content{
   padding: 0 !important;
 }
