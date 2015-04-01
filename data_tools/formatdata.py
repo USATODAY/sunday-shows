@@ -18,7 +18,9 @@ def check_last_week(appearance):
     date_array = date.split("-")
     appearance_date_obj = datetime.datetime(int(date_array[0]), int(date_array[1]), int(date_array[2]))
     current_date = datetime.datetime.today()
-    last_sunday_date = datetime.datetime(current_date.year, current_date.month, current_date.day - (current_date.weekday() + 1))
+    delta = datetime.timedelta(current_date.weekday() + 1)
+    last_sunday_date = current_date - delta
+    # last_sunday_date = datetime.datetime(current_date.year, current_date.month, current_date.day - (current_date.weekday() + 1))
     if appearance_date_obj.year == last_sunday_date.year and appearance_date_obj.month == last_sunday_date.month and appearance_date_obj.day == last_sunday_date.day:
         return True
     else:
@@ -44,6 +46,7 @@ def create_appearance_dict(appearance):
         is_last_week = check_last_week(appearance)
     except:
         slack_notify("FYI some dates may have errors...", "@mitchthorson")
+        raise
         is_last_week = False
 
     if is_last_week == True:

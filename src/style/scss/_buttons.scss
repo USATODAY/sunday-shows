@@ -29,6 +29,7 @@
   @include BoxShadowHelper(4);
   color: $blue;
   height: 80px;
+  position: relative;
   text-transform: uppercase;
   transition: all 250ms ease;
   width: 80px;
