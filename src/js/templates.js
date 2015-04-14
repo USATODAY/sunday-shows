@@ -10,11 +10,13 @@ __p += '<div class="iapp-project-info-wrap">\n    <h1 class="iapp-page-header">'
 ((__t = ( header )) == null ? '' : __t) +
 '</h1>\n    <p class="iapp-page-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
+' </p>\n    <p class="iapp-page-chatter">' +
+((__t = ( contact_chatter )) == null ? '' : __t) +
 ' <a href=\'mailto:' +
 ((__t = (contact_email)) == null ? '' : __t) +
 '\'>' +
 ((__t = (contact_email)) == null ? '' : __t) +
-'</a></p>\n\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                All guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last week\n            </div>\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
+'</a>.</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                All guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last week\n            </div>\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
 ((__t = ( header )) == null ? '' : __t) +
 '</h2>\n            <p class="iapp-intro-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
