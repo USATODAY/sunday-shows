@@ -50,8 +50,8 @@ define(
             var tags = [];
             _this.data.filters = _.map(_this.data.filters, function(filter){
                 tagObj =  {
-                    tagName: _this.cleanTag(filter),
-                    tagPretty: filter,
+                    tagName: _this.cleanTag(filter.filter),
+                    tagPretty: filter.display_name,
                     isNetwork: false,
                     isCategory: false
                 };
