@@ -1,19 +1,19 @@
 <div class="iapp-project-info-wrap">
     <h1 class="iapp-page-header"><%= header %></h1>
-    <p class="iapp-page-chatter"><%= chatter %> </p>
-    <p class="iapp-page-chatter"><%= contact_chatter %> <a href='mailto:<%=contact_email%>'><%=contact_email%></a>.</p>
+    <p class="iapp-page-chatter"><%= chatter %> <%= contact_chatter %> <a href='mailto:<%=contact_email%>'><%=contact_email%></a>. </p>
+    <p class="iapp-page-chatter">Last updated on: <%=last_updated %></p>
     <div class="iapp-share-wrap"></div>
      <div class="switch">
         <label>
             <input type="radio" class='iapp-last-week-radio' name='last-week' checked>
             <div class="iapp-toggle-name">
-                All guests
+                2015 guests
             </div>
         </label>
         <label>
             <input type="radio" class='iapp-last-week-radio' name='last-week'>
             <div class="iapp-toggle-name">
-                Last week
+                Last sunday
             </div>
         </label>
       </div>

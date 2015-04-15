@@ -14,7 +14,7 @@
       
         <div class="iapp-detail-info">
             <h2 class="card-back-header"><%= guest %> </h2>
-            <p class="iapp-summary"><%=description%></p>
+            <p class="iapp-summary"><%=description%><% if (category == "house" || category =="senate") { %>, <% print(party.charAt(0).toUpperCase() + party.slice(1))%>, <%=state%><% } %></p>
             <table class="table">
                 
             <% _.each(appearances, function(appearance) { %>

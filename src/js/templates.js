@@ -10,13 +10,15 @@ __p += '<div class="iapp-project-info-wrap">\n    <h1 class="iapp-page-header">'
 ((__t = ( header )) == null ? '' : __t) +
 '</h1>\n    <p class="iapp-page-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
-' </p>\n    <p class="iapp-page-chatter">' +
+' ' +
 ((__t = ( contact_chatter )) == null ? '' : __t) +
 ' <a href=\'mailto:' +
 ((__t = (contact_email)) == null ? '' : __t) +
 '\'>' +
 ((__t = (contact_email)) == null ? '' : __t) +
-'</a>.</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                All guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last week\n            </div>\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
+'</a>. </p>\n    <p class="iapp-page-chatter">Last updated on: ' +
+((__t = (last_updated )) == null ? '' : __t) +
+'</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                2015 guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last sunday\n            </div>\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
 ((__t = ( header )) == null ? '' : __t) +
 '</h2>\n            <p class="iapp-intro-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
@@ -34,8 +36,14 @@ with (obj) {
 __p += '\n      <div class="card card-detail">\n      \n        <div class="iapp-detail-image-wrap">\n        </div>\n      \n        <div class="close-card">\n            <img class="iapp-close-card-inner" src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/close-icon.svg">\n            \n            </img>\n        </div>\n      \n      \n      \n        <div class="iapp-detail-info">\n            <h2 class="card-back-header">' +
 ((__t = ( guest )) == null ? '' : __t) +
 ' </h2>\n            <p class="iapp-summary">' +
-((__t = (description)) == null ? '' : __t) +
-'</p>\n            <table class="table">\n                \n            ';
+((__t = (description)) == null ? '' : __t);
+ if (category == "house" || category =="senate") { ;
+__p += ', ';
+ print(party.charAt(0).toUpperCase() + party.slice(1));
+__p += ', ' +
+((__t = (state)) == null ? '' : __t);
+ } ;
+__p += '</p>\n            <table class="table">\n                \n            ';
  _.each(appearances, function(appearance) { ;
 __p += '\n                <tr class="iapp-card-back-detail-appearance">\n                    <td class="iapp-card-back-detail-appearance-date">' +
 ((__t = (appearance.date)) == null ? '' : __t) +
@@ -62,7 +70,15 @@ __p += '<div class="iapp-card-info">\n    <h2 class="iapp-card-info-header">' +
 ((__t = ( guest)) == null ? '' : __t) +
 '</h2>\n    <p class="iapp-card-info-text">' +
 ((__t = (description)) == null ? '' : __t) +
-'</p>\n    \n</div>\n<div class="iapp-card-front-image-wrap">\n    <div class="iapp-card-front-number">\n       <div class="iapp-card-front-number-inner ">\n           ' +
+'</p>\n    ';
+ if (category == "house" || category =="senate") { ;
+__p += '\n    <p class="iapp-card-info-text">';
+ print(party.charAt(0).toUpperCase() + party.slice(1));
+__p += ', ' +
+((__t = (state)) == null ? '' : __t) +
+'</p>\n    ';
+ } ;
+__p += '\n    \n</div>\n<div class="iapp-card-front-image-wrap">\n    <div class="iapp-card-front-number">\n       <div class="iapp-card-front-number-inner ">\n           ' +
 ((__t = (filteredAppearancesTotal)) == null ? '' : __t) +
 '\n       </div>\n       <img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-empty.svg" alt="" />\n   </div>\n</div>\n';
  if (filteredAppearancesTotal !== 1) {;

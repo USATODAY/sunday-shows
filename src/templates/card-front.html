@@ -1,6 +1,9 @@
 <div class="iapp-card-info">
     <h2 class="iapp-card-info-header"><%= guest%></h2>
     <p class="iapp-card-info-text"><%=description%></p>
+    <% if (category == "house" || category =="senate") { %>
+    <p class="iapp-card-info-text"><% print(party.charAt(0).toUpperCase() + party.slice(1))%>, <%=state%></p>
+    <% } %>
     
 </div>
 <div class="iapp-card-front-image-wrap">

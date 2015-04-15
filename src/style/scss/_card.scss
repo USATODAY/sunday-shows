@@ -69,6 +69,7 @@
   margin-right: 5px;
   max-width: 100%;
   overflow: hidden;
+  padding-bottom: 1em;
   position: relative;
   text-align: center;
   transition: none;
@@ -90,7 +91,7 @@
 
 
   p {
-    margin: 0.5em 0 1em 0;
+    margin: 0;
   }
    
 }
@@ -237,6 +238,7 @@
 
 .iapp-card-front-image-wrap {
   height: 60px;
+  margin: 1em auto;
   position: relative;
 }
 
@@ -248,7 +250,7 @@
 .iapp-card-info-header {
   font-family: "Futura Today Demibold", Arial,sans-serif;
   font-size: 1.2em;
-  margin: 0;
+  margin: 0 0 .5em 0;
 }
 
 .iapp-card-info-text {
