@@ -173,22 +173,9 @@ return __p
 
 this["templates"]["tags.html"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
-function print() { __p += __j.call(arguments, '') }
+var __t, __p = '', __e = _.escape;
 with (obj) {
-
- _.each(tags, function(tag) {
-  var tagClass;
-    tag == ":(" ? tagClass="sad" : tagClass = tag.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
-    
-  ;
-__p += '\n\n<div class="iapp-filter-button" data-filter="' +
-((__t = ( tagClass )) == null ? '' : __t) +
-'">' +
-((__t = ( tag )) == null ? '' : __t) +
-'</div>\n\n\n';
- }); ;
-__p += '\n\n<div class="iapp-filter-button-clear">Clear Filters</div>';
+__p += '<h3 class="filter-title">Occupation</h3>\n<div class="occupation-filters"></div>\n<h3 class="filter-title">Race</h3>\n<div class="race-filters"></div>\n<h3 class="filter-title">Gender</h3>\n<div class="gender-filters"></div>\n<h3 class="filter-title">Network</h3>\n<div class="network-filters"></div>\n<h3 class="filter-title">Party</h3>\n<div class="party-filters"></div>\n';
 
 }
 return __p

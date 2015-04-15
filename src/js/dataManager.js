@@ -53,7 +53,8 @@ define(
                     tagName: _this.cleanTag(filter.filter),
                     tagPretty: filter.display_name,
                     isNetwork: false,
-                    isCategory: false
+                    isCategory: false,
+                    tagCategory: filter.category
                 };
                 //check to see if the tag is a network
                 if (_.contains(networkFilters, tagObj.tagName)) {

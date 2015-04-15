@@ -36,13 +36,13 @@
   .iapp-menu-panel {
     transform: translate(-600%, 0);
   }
-  .iapp-menu-button {
+  .iapp-button.iapp-menu-button {
     transform: translate(50%, 0);
   }
 }
 
 .iapp-menu-show {
-  .iapp-menu-close {
+  .iapp-button.iapp-menu-close {
     transform: translate(50%, 0);
   }
 }
@@ -80,7 +80,7 @@
   text-transform: uppercase;
 }
 
-.iapp-menu-close {
+.iapp-button.iapp-menu-close {
     bottom: 25px;
     position: absolute;
     right: 50%;
@@ -89,7 +89,7 @@
     z-index: 100;
 }
 
-.iapp-menu-button {
+.iapp-button.iapp-menu-button {
   bottom: 25px;
   border-radius: 50%;
   position: absolute;

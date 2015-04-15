@@ -16,6 +16,10 @@
     background: white;
     color: $dark-grey;
   }
+
+  &.unavailable {
+    display: none;
+  }
 }
 
 .iapp-filters-wrap {
@@ -32,4 +36,9 @@
   &.show {
     display: inline-block;
   }
+}
+
+.filter-title {
+    clear: both;
+    font-family: "Futura Today Light", Arial, sans-serif;
 }

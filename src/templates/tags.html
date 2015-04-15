@@ -1,12 +1,10 @@
-<% _.each(tags, function(tag) {
-  var tagClass;
-    tag == ":(" ? tagClass="sad" : tagClass = tag.toLowerCase().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"").replace(/\s+/g, "-");
-    
-  %>
-
-<div class="iapp-filter-button" data-filter="<%= tagClass %>"><%= tag %></div>
-
-
-<% }); %>
-
-<div class="iapp-filter-button-clear">Clear Filters</div>
+<h3 class="filter-title">Occupation</h3>
+<div class="occupation-filters"></div>
+<h3 class="filter-title">Race</h3>
+<div class="race-filters"></div>
+<h3 class="filter-title">Gender</h3>
+<div class="gender-filters"></div>
+<h3 class="filter-title">Network</h3>
+<div class="network-filters"></div>
+<h3 class="filter-title">Party</h3>
+<div class="party-filters"></div>
