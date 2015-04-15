@@ -1,6 +1,6 @@
 .iapp-menu-panel {
   background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
+  border-radius: 0px 5px 5px 0px;
   @include BoxShadowHelper(2);
   color: white;
   float: left;
