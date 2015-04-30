@@ -11,10 +11,13 @@ define([
       tagName: "div",
 
       initialize: function() {
-        
           this.listenTo(this.model, 'change:filteredAppearancesTotal', this.onAppearancesChange);
       },
-
+      attributes: function() {
+          return {
+            "data-search-name": this.model.get("searchName")
+          };
+      },
       className: function() {
         var tags = this.model.get("tags");
         var classes = "card small-card";

@@ -28,7 +28,9 @@ define([
     el: ".iapp-page-wrap",
     events: {
       'click .iapp-begin-button': 'onBeginClick',
-      'change .iapp-last-week-radio': 'onCheckBoxChange'
+      'change .iapp-last-week-radio': 'onCheckBoxChange',
+      'click .iapp-search-button': 'searchText',
+      'keypress #iapp-search-input': 'onSearchKeypress'
     },
 
     initialize: function() {
@@ -41,10 +43,11 @@ define([
     
 
     template: templates["app-view.html"], 
+    searchTemplate: templates["search.html"],
 
     render: function() {
       this.$el.html(this.template(dataManager.data.copy));
-      
+      this.$('.iapp-search-wrap').html(this.searchTemplate());
     },
 
     addSubViews: function() {
@@ -100,7 +103,20 @@ define([
         this.menuView.model.set({'isMenuOpen': false});
         this.$('.iapp-last-week-radio').eq(1).prop('checked', true);
         this.$('.iapp-last-week-radio').eq(0).prop('checked', false);
-    }
+    },
+
+    onSearchKeypress: function(e) {
+        var _this = this;
+        if (e.charCode == 13) {
+            _this.searchText();
+        }
+    },
+
+    searchText: function() {
+        var searchText = this.$('#iapp-search-input').val();
+        Backbone.trigger("search", this._normalizeName(searchText));
+    },
+    _normalizeName: dataManager._normalizeName
     
   });
 
