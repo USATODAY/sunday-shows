@@ -30,19 +30,14 @@ define(
             var _this = this;
             jQuery.getJSON(dataURL, function(data) {        
                 _this.data = data;
-                
-                
-
-                
                 _.each(_this.data.people, function(dataObj) {
-                    
-
+                    _.extend(dataObj, {
+                        searchName: _this._normalizeName(dataObj.guest)
+                    });
                 });
-
                 console.log(_this.data);
                 _this.organizeTags();
                 Backbone.trigger("data:ready", this);
-
             });
         },
         organizeTags: function() {
@@ -73,8 +68,15 @@ define(
             return tagName.replace(/\n+/g, "-").toLowerCase();
         },
         userName: '',
-        base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/'
+        base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/',
+        _normalizeName: function(name) {
+            var noSpaces = name.toLowerCase().trim().replace(/\s+/g, "_");
+            var noAmpersands = noSpaces.replace(/&+/g, "and");
+            var noPunctuation = noAmpersands.replace(/[\.,-\/#!$%\^&\*;:{}=\-`~()]/g,"");
+            return noPunctuation.toString();
+        }
     };
 
+    
 
 });

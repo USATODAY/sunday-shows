@@ -18,7 +18,7 @@ __p += '<div class="iapp-project-info-wrap">\n    <h1 class="iapp-page-header">'
 ((__t = (contact_email)) == null ? '' : __t) +
 '</a>. </p>\n    <p class="iapp-page-chatter">Last updated on: ' +
 ((__t = (last_updated )) == null ? '' : __t) +
-'</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                2015 guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last sunday\n            </div>\n        </label>\n      </div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
+'</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                2015 guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last sunday\n            </div>\n        </label>\n    </div>\n    <div class="iapp-search-wrap"></div>\n</div>\n<div class="no-results-wrap">\n    <div class=\'no-results-message alert alert-danger\'><strong>No results!</strong> Try searching for another guest.</div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
 ((__t = ( header )) == null ? '' : __t) +
 '</h2>\n            <p class="iapp-intro-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
@@ -126,6 +126,16 @@ __p += '<div class="iapp-menu-panel">\n    \n    \n    <h3 class="iapp-menu-head
 '</span><span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n            </div>\n        </div>\n        <div class="iapp-menu-scoreboard-dislikes">\n            \n            <span class="iapp-menu-scoreboard-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" alt="like"></span> \n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
 ((__t = (numdislikes)) == null ? '' : __t) +
 '</span> \n            </div>\n        </div>\n    </div>\n</div>\n';
+
+}
+return __p
+};
+
+this["templates"]["search.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="search-wrap-container">\n    <div class="search-wrap input-group input-group-lg">\n        <input type="text" name="search-box" class="iapp-search-input form-control" id="iapp-search-input" value="" placeholder="search for a guest" />\n        <span class="iapp-search-button input-group-btn iapp-clickable"><button type="button" class="btn btn-default">search</button></span>\n    </div>\n</div>\n';
 
 }
 return __p

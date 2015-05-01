@@ -23,15 +23,17 @@ define([
     },
 
     initialize: function() {
-      this.listenTo(this.collection, 'change:highlight', this.showDetail);
-      this.listenTo(router, "highlight", this.onHighlightRoute);
-      this.listenTo(router, "homeRoute", this.onHomeRoute);
-      this.listenTo(Backbone, "filters:update", this.filter);
-      this.listenTo(Backbone, 'menu:show', this.onMenuShow);
-      this.listenTo(Backbone, 'menu:hide', this.onMenuHide);
-      this.listenTo(Backbone, 'route:share', this.onRouteShare);
-      this.listenTo(Backbone, 'app:reset', this.onAppReset);
-      this.render();
+        this.$noResultsMessage = $('.no-results-wrap');
+        this.listenTo(this.collection, 'change:highlight', this.showDetail);
+        this.listenTo(router, "highlight", this.onHighlightRoute);
+        this.listenTo(router, "homeRoute", this.onHomeRoute);
+        this.listenTo(Backbone, "filters:update", this.filter);
+        this.listenTo(Backbone, 'menu:show', this.onMenuShow);
+        this.listenTo(Backbone, 'menu:hide', this.onMenuHide);
+        this.listenTo(Backbone, 'route:share', this.onRouteShare);
+        this.listenTo(Backbone, 'app:reset', this.onAppReset);
+        this.listenTo(Backbone, 'search', this.searchByName);
+        this.render();
 
     },
 
@@ -75,9 +77,7 @@ define([
     },
 
     unveilImages: function() {
-
       var _this = this;
-
       this.$('.cover-img').unveil(500, function() {
         $(this).imagesLoaded(function() {
           _this.relayout();
@@ -99,6 +99,21 @@ define([
         _.delay(function() {
           $(window).trigger('scroll');
         }, 2000);
+    },
+    searchByName: function(name) {
+        this.$el.isotope({
+            filter: function() {
+                var itemName = $(this).data("search-name").toString();
+                return itemName.indexOf(name) > -1;
+            }
+        });
+        numResults = this.$el.data('isotope').filteredItems.length;
+        if (numResults === 0) {
+            this.$noResultsMessage.show();
+            this.$el.css('height', 'auto');
+        } else {
+            this.$noResultsMessage.hide();
+        }
     },
 
     relayout: _.throttle(function() {
