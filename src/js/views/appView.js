@@ -63,8 +63,15 @@ define([
     },
 
     onDataReady: function() {
+      this.cleanUrl();
       this.render();
       this.addSubViews();
+    },
+
+    cleanUrl: function() {
+        if (window.location.search !== "") {
+            window.location.search = "";
+        }
     },
 
     onCheckBoxChange: function() {

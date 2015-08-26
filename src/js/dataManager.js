@@ -35,7 +35,6 @@ define(
                         searchName: _this._normalizeName(dataObj.guest)
                     });
                 });
-                console.log(_this.data);
                 _this.organizeTags();
                 Backbone.trigger("data:ready", this);
             });

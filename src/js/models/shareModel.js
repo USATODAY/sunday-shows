@@ -25,7 +25,6 @@ define(
                 'email_link': this.createEmailLink(baseURL)
                 
             }); 
-            console.log(this);
            
         },
 
