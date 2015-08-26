@@ -82,7 +82,6 @@ define(
         },
         
         filter: function() {
-            console.log("this should filter tags that are unvavailable");
             // this.$el.isotope({filter: ':not(.unavailable)'}); 
             
         },

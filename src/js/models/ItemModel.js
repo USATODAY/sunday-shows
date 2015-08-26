@@ -26,8 +26,6 @@ define([
 
         filterAppearancesByNetwork: function(networkArray, categoryArray) {
             var totalAppearances = this.get('appearances');
-            console.log(networkArray);
-            console.log(categoryArray);
             var filteredAppearances = totalAppearances;
             if (networkArray.length > 0) {
                 filteredAppearances = _.filter(filteredAppearances, function(appearance) {

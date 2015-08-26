@@ -20,8 +20,6 @@ define([
 
             initialize: function() {
                 this.listenTo(this.collection, 'change:highlight', this.showDetail);
-                console.log("last week");
-                console.log(this.collection);
                 this.render();
             },
             className: 'iapp-last-week-wrap',
@@ -30,7 +28,6 @@ define([
                 this.sortCollection();
                 var _this = this;
                 _.each(this.sortedCollection, function(networkArray) {
-                    console.log(networkArray);
                     _this.$el.append(_this.template({networkGuests: networkArray}));
                 });
                 this.$('img').unveil(200);
