@@ -18,7 +18,7 @@ __p += '<div class="iapp-project-info-wrap">\n    <h1 class="iapp-page-header">'
 ((__t = (contact_email)) == null ? '' : __t) +
 '</a>. </p>\n    <p class="iapp-page-chatter">Last updated on: ' +
 ((__t = (last_updated )) == null ? '' : __t) +
-'</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                2015-16 guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last sunday\n            </div>\n        </label>\n    </div>\n    <div class="iapp-search-wrap"></div>\n</div>\n<div class="no-results-wrap">\n    <div class=\'no-results-message alert alert-danger\'><strong>No results!</strong> Try searching for another guest.</div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
+'</p>\n    <div class="iapp-share-wrap"></div>\n     <div class="switch">\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\' checked>\n            <div class="iapp-toggle-name">\n                2015-16 guests\n            </div>\n        </label>\n        <label>\n            <input type="radio" class=\'iapp-last-week-radio\' name=\'last-week\'>\n            <div class="iapp-toggle-name">\n                Last sunday\n            </div>\n        </label>\n    </div>\n    <div class="iapp-search-wrap"></div>\n</div>\n<div class="no-results-wrap">\n    <div class=\'no-results-message alert alert-danger\'><strong>No results!</strong> Try searching for another guest.</div>\n</div>\n<div class="iapp-menu"></div>\n<div id="card-wrap" class="iapp-card-wrap"></div>\n\n<div class="iapp-intro-wrap">\n    <div class="iapp-intro-content-wrap">\n        <div class="iapp-intro-icon-wrap">\n            <!-- <div class="iapp&#45;intro&#45;icon"><img src="img/tv&#45;icon&#45;white.svg" alt=""></div> -->\n            <div class="iapp-intro-icon"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-blue.svg" alt=""></div>\n        </div> <!-- end iapp-intro-icon-wrap -->\n        <div class="iapp-intro-info">\n            <h2 class="iapp-intro-header">' +
 ((__t = ( header )) == null ? '' : __t) +
 '</h2>\n            <p class="iapp-intro-chatter">' +
 ((__t = ( chatter )) == null ? '' : __t) +
@@ -33,7 +33,7 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '\n      <div class="card card-detail">\n      \n        <div class="iapp-detail-image-wrap">\n        </div>\n      \n        <div class="close-card">\n            <img class="iapp-close-card-inner" src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/close-icon.svg">\n            \n            </img>\n        </div>\n      \n      \n      \n        <div class="iapp-detail-info">\n            <h2 class="card-back-header">' +
+__p += '\n      <div class="card card-detail">\n      \n        <div class="iapp-detail-image-wrap">\n        </div>\n      \n        <div class="close-card">\n            <img class="iapp-close-card-inner" src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/close-icon.svg">\n            \n            </img>\n        </div>\n      \n      \n      \n        <div class="iapp-detail-info">\n            <h2 class="card-back-header">' +
 ((__t = ( guest )) == null ? '' : __t) +
 ' </h2>\n            <p class="iapp-summary">' +
 ((__t = (description)) == null ? '' : __t);
@@ -80,7 +80,7 @@ __p += ', ' +
  } ;
 __p += '\n    \n</div>\n<div class="iapp-card-front-image-wrap">\n    <div class="iapp-card-front-number">\n       <div class="iapp-card-front-number-inner ">\n           ' +
 ((__t = (filteredAppearancesTotal)) == null ? '' : __t) +
-'\n       </div>\n       <img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-empty.svg" alt="" />\n   </div>\n</div>\n';
+'\n       </div>\n       <img src="https://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/tv-icon-empty.svg" alt="" />\n   </div>\n</div>\n';
  if (filteredAppearancesTotal !== 1) {;
 __p += '\n<p>appearances</p>\n';
  } else {;
@@ -97,7 +97,7 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class=\'iapp-last-week-entry\'>\n    <h2 class=\'iapp-last-week-header\'><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/';
+__p += '<div class=\'iapp-last-week-entry\'>\n    <h2 class=\'iapp-last-week-header\'><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/';
  print(networkGuests[0].last_week_network.toLowerCase());
 __p += '.png" alt="' +
 ((__t = (networkGuests[0].last_week_network )) == null ? '' : __t) +
@@ -121,9 +121,9 @@ this["templates"]["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="iapp-menu-panel">\n    \n    \n    <h3 class="iapp-menu-header iapp-menu-header-filters">Filters</h3>\n    <div class="iapp-filters-wrap"></div> \n</div>\n\n<div class="iapp-menu-control-area">\n    <div class="iapp-menu-button iapp-button iapp-button-blue iapp-clickable"><div class="iapp-button-text">Filters</div></div>\n    <!-- <div class="iapp&#45;top&#45;button iapp&#45;button iapp&#45;button&#45;blue iapp&#45;clickable"><div class="iapp&#45;button&#45;text">Top</div></div> -->\n    <div class="iapp-menu-close iapp-button iapp-clickable"><div class="iapp-button-text">Close Menu</div></div>\n    <div class="iapp-reset-button iapp-button iapp-clickable"><div class="iapp-button-text">Reset</div></div>\n    <div class="iapp-menu-scoreboard">\n\n        <div class="iapp-menu-scoreboard-likes">\n            <span class="iapp-menu-scoreboard-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" alt="like"></span>\n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
+__p += '<div class="iapp-menu-panel">\n    \n    \n    <h3 class="iapp-menu-header iapp-menu-header-filters">Filters</h3>\n    <div class="iapp-filters-wrap"></div> \n</div>\n\n<div class="iapp-menu-control-area">\n    <div class="iapp-menu-button iapp-button iapp-button-blue iapp-clickable"><div class="iapp-button-text">Filters</div></div>\n    <!-- <div class="iapp&#45;top&#45;button iapp&#45;button iapp&#45;button&#45;blue iapp&#45;clickable"><div class="iapp&#45;button&#45;text">Top</div></div> -->\n    <div class="iapp-menu-close iapp-button iapp-clickable"><div class="iapp-button-text">Close Menu</div></div>\n    <div class="iapp-reset-button iapp-button iapp-clickable"><div class="iapp-button-text">Reset</div></div>\n    <div class="iapp-menu-scoreboard">\n\n        <div class="iapp-menu-scoreboard-likes">\n            <span class="iapp-menu-scoreboard-icon"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/like.svg" alt="like"></span>\n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
 ((__t = (numlikes)) == null ? '' : __t) +
-'</span><span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n            </div>\n        </div>\n        <div class="iapp-menu-scoreboard-dislikes">\n            \n            <span class="iapp-menu-scoreboard-icon"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" alt="like"></span> \n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
+'</span><span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n            </div>\n        </div>\n        <div class="iapp-menu-scoreboard-dislikes">\n            \n            <span class="iapp-menu-scoreboard-icon"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/dislike.svg" alt="like"></span>\n            <div class="iapp-menu-scoreboard-scrore-wrap">\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-total">/10</span>\n                <span class="iapp-menu-scoreboard-score iapp-menu-scoreboard-score-number">' +
 ((__t = (numdislikes)) == null ? '' : __t) +
 '</span> \n            </div>\n        </div>\n    </div>\n</div>\n';
 
@@ -153,7 +153,7 @@ __p += '<div class="iapp-end-modal-wrap-content">\n    <div class="iapp-end-moda
 ((__t = (twitterShare)) == null ? '' : __t) +
 '&text=' +
 ((__t = (encodedShare)) == null ? '' : __t) +
-'" class="iapp-share-button iapp-share-twitter iapp-share-popup" target="_blank"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/twitter.svg" alt="Twitter share"></a>\n        <a href="https://www.facebook.com/dialog/feed?display=popup&app_id=' +
+'" class="iapp-share-button iapp-share-twitter iapp-share-popup" target="_blank"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/twitter.svg" alt="Twitter share"></a>\n        <a href="https://www.facebook.com/dialog/feed?display=popup&app_id=' +
 ((__t = (fb_id)) == null ? '' : __t) +
 '&link=' +
 ((__t = (fbShare)) == null ? '' : __t) +
@@ -163,9 +163,9 @@ __p += '<div class="iapp-end-modal-wrap-content">\n    <div class="iapp-end-moda
 ((__t = (encodedShare)) == null ? '' : __t) +
 '&redirect_uri=' +
 ((__t = (fb_redirect)) == null ? '' : __t) +
-'" class="iapp-share-button iapp-share-facebook iapp-share-popup" target="_blank"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/fb.svg" alt="Facebook share"></a>\n        <a href="' +
+'" class="iapp-share-button iapp-share-facebook iapp-share-popup" target="_blank"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/fb.svg" alt="Facebook share"></a>\n        <a href="' +
 ((__t = (email_link)) == null ? '' : __t) +
-'" class="iapp-share-button iapp-share-email"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/email.svg" alt="Email share"></a>\n    </div>\n</div>\n\n<div class="iapp-end-modal-bg"></div>';
+'" class="iapp-share-button iapp-share-email"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/email.svg" alt="Email share"></a>\n    </div>\n</div>\n\n<div class="iapp-end-modal-bg"></div>';
 
 }
 return __p
@@ -179,7 +179,7 @@ __p += '<div class="iapp-share-buttons">\n    <a href="https://twitter.com/inten
 ((__t = (twitterShare)) == null ? '' : __t) +
 '&text=' +
 ((__t = (encodedShare)) == null ? '' : __t) +
-'" id="Twitter Share" class="iapp-share-button iapp-share-twitter iapp-share-popup" target="_blank"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/twitter.svg" alt="Twitter share"></a>\n    <a href="https://www.facebook.com/dialog/feed?display=popup&app_id=' +
+'" id="Twitter Share" class="iapp-share-button iapp-share-twitter iapp-share-popup" target="_blank"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/twitter.svg" alt="Twitter share"></a>\n    <a href="https://www.facebook.com/dialog/feed?display=popup&app_id=' +
 ((__t = (fb_id)) == null ? '' : __t) +
 '&link=' +
 ((__t = (fbShare)) == null ? '' : __t) +
@@ -189,9 +189,9 @@ __p += '<div class="iapp-share-buttons">\n    <a href="https://twitter.com/inten
 ((__t = (encodedShare)) == null ? '' : __t) +
 '&redirect_uri=' +
 ((__t = (fb_redirect)) == null ? '' : __t) +
-'" id="Facebook Share" class="iapp-share-button iapp-share-facebook iapp-share-popup" target="_blank"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/fb.svg" alt="Facebook share"></a>\n    <a href="' +
+'" id="Facebook Share" class="iapp-share-button iapp-share-facebook iapp-share-popup" target="_blank"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/fb.svg" alt="Facebook share"></a>\n    <a href="' +
 ((__t = (email_link)) == null ? '' : __t) +
-'" class="iapp-share-button iapp-share-email"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/email.svg" id="Email Share" alt="Email share"></a>\n</div>\n';
+'" class="iapp-share-button iapp-share-email"><img src="https://www.gannett-cdn.com/experiments/usatoday/2015/02/red-carpet/img/email.svg" id="Email Share" alt="Email share"></a>\n</div>\n';
 
 }
 return __p

@@ -15,7 +15,7 @@ define(
     } else {
 
 
-        dataURL = "http://" + hostname + "/services/webproxy/?url=http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/data/data.json";
+        dataURL = "https://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/data/data.json";
 
     }
 
@@ -67,7 +67,7 @@ define(
             return tagName.replace(/\n+/g, "-").toLowerCase();
         },
         userName: '',
-        base_url: 'http://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/',
+        base_url: 'https://www.gannett-cdn.com/experiments/usatoday/2015/03/sunday-shows/img/',
         _normalizeName: function(name) {
             var noSpaces = name.toLowerCase().trim().replace(/\s+/g, "_");
             var noAmpersands = noSpaces.replace(/&+/g, "and");
